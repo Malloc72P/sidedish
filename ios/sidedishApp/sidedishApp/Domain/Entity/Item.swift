@@ -36,13 +36,22 @@ struct Item: Codable, Equatable, Hashable {
         return self.salePrice
     }
     
-    func getEventBadgeName(_ index: Int) -> String {
-        return self.eventBadgeList[index].getName()
+//    func getEventBadgeName(_ index: Int) -> String {
+//        return self.eventBadgeList[index].getName()
+//    }
+//
+//    func getEventBadgeColor(_ index: Int) -> String {
+//        return self.eventBadgeList[index].getColorHex()
+//    }
+    
+    func getEventBadgeList() -> [EventBadge] {
+        return self.eventBadgeList
     }
     
-    func getEventBadgeColor(_ index: Int) -> String {
-        return self.eventBadgeList[index].getColorHex()
+    func isSale() -> Bool {
+        return self.salePrice != -1
     }
+
 }
 
 struct EventBadge: Codable, Equatable, Hashable {

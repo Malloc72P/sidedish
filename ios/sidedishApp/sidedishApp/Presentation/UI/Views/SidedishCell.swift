@@ -14,9 +14,11 @@ class SidedishCell: UICollectionViewCell {
     let descriptionLabel = UILabel()
     let normalPriceLabel = UILabel()
     let salePriceLabel = UILabel()
-    let badgeLabel = BadgeLabel()
     let eventBadgeStackView = UIStackView()
     let thumbnailImageView = RemoteImageView()
+    
+    private let isSale = false
+    private var badgeList = [EventBadge]()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,12 +33,43 @@ class SidedishCell: UICollectionViewCell {
     func configureCell(item: Item) {
         self.nameLabel.text = item.getName()
         self.descriptionLabel.text = item.getDescription()
-        self.normalPriceLabel.text = "\(item.getNormalPrice())"
+        
         self.salePriceLabel.text = "\(item.getSalePrice())"
+        self.normalPriceLabel.text = "\(item.getNormalPrice())"
+        if item.isSale() {
+            normalPriceLabel.attributedText = strikeThrough(text: "\(item.getNormalPrice())")
+            normalPriceLabel.font = UIFont.systemFont(ofSize: 12)
+            normalPriceLabel.textColor = .systemGray2
+        } else {
+            self.normalPriceLabel.isHidden = true
+            swap(&salePriceLabel.text, &normalPriceLabel.text)
+            normalPriceLabel.font = UIFont.systemFont(ofSize: 15)
+            normalPriceLabel.textColor = .black
+        }
+        
         guard let url = URL(string: item.getThumbnailImage()) else { return }
         self.thumbnailImageView.setImage(with: url)
-        self.badgeLabel.backgroundColor = .systemGreen
-        self.badgeLabel.text = "이벤트특가"
+        
+        badgeList = item.getEventBadgeList()
+        dump(badgeList)
+        badgeList.forEach({ badge in
+            let badgeLabel = BadgeLabel()
+            badgeLabel.backgroundColor = UIColor.hexStringToUIColor(hex: badge.getColorHex())
+            badgeLabel.text = badge.getName()
+            
+            badgeLabel.padding = UIEdgeInsets(top: 5, left: 8, bottom: 5, right: 8)
+            badgeLabel.sizeToFit()
+            badgeLabel.layer.cornerRadius = 8
+            badgeLabel.layer.masksToBounds = true
+            badgeLabel.textColor = .black
+            badgeLabel.font = UIFont.boldSystemFont(ofSize: 16)
+          
+            eventBadgeStackView.spacing = 8
+            eventBadgeStackView.axis = .horizontal
+            // badgelabel 추가
+            eventBadgeStackView.addArrangedSubview(badgeLabel)
+            
+        })
     }
     
     private func configureUI() {
@@ -47,29 +80,16 @@ class SidedishCell: UICollectionViewCell {
         descriptionLabel.textColor = .gray
         
         salePriceLabel.font = UIFont.boldSystemFont(ofSize: 15)
-        normalPriceLabel.font = UIFont.systemFont(ofSize: 14)
-        normalPriceLabel.textColor = .systemGray2
-        
-        badgeLabel.padding = UIEdgeInsets(top: 5, left: 8, bottom: 5, right: 8)
-        badgeLabel.sizeToFit()
-        badgeLabel.layer.cornerRadius = 8
-        badgeLabel.layer.masksToBounds = true
-        badgeLabel.textColor = .systemBackground
-        badgeLabel.font = UIFont.boldSystemFont(ofSize: 16)
-        
-        eventBadgeStackView.spacing = 8
-        eventBadgeStackView.axis = .horizontal
-        
-        eventBadgeStackView.addArrangedSubview(badgeLabel)
         
         let priceStack = UIStackView(arrangedSubviews: [salePriceLabel, normalPriceLabel])
         priceStack.axis = .horizontal
-        priceStack.spacing = 8
+        priceStack.spacing = 4
         
         let textStack = UIStackView(arrangedSubviews: [nameLabel, descriptionLabel, priceStack, eventBadgeStackView])
         textStack.axis = .vertical
         textStack.alignment = .leading
         textStack.spacing = 8
+
         
         thumbnailImageView.contentMode = .scaleAspectFill
         thumbnailImageView.layer.cornerRadius = 6
@@ -95,4 +115,27 @@ class SidedishCell: UICollectionViewCell {
             itemStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8)
         ])
     }
+    
+    func strikeThrough(text: String) -> NSMutableAttributedString {
+        let attributeString = NSMutableAttributedString(string: text)
+        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: NSUnderlineStyle.single.rawValue, range: NSMakeRange(0,attributeString.length))
+        
+        return attributeString
+    }
 }
+
+extension UIColor {
+    class func hexStringToUIColor (hex:String) -> UIColor {
+        var rgbValue:UInt64 = 0
+        Scanner(string: hex).scanHexInt64(&rgbValue)
+        
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
+    }
+}
+
+

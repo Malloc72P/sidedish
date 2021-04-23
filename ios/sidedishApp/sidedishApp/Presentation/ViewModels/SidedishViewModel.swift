@@ -56,6 +56,8 @@ class SidedishViewModel: SidedishViewModelType {
             }
             .eraseToAnyPublisher()
         
+        
+        
         Publishers.CombineLatest3(mainPub, soupPub, sidePub)
             .receive(on: DispatchQueue.global())
             .sink(receiveValue: {

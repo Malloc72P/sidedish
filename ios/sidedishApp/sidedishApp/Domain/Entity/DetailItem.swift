@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DetailItem: Codable {
+struct DetailItem: Codable, Hashable, Equatable{
     private let id: Int
     private let detailImages: [String]
     private let descriptionImages: [String]
@@ -49,5 +49,21 @@ struct DetailItem: Codable {
         self.isPurchasable = isPurchasable
         self.deliveryInfo = deliveryInfo
         self.deliveryFee = deliveryFee
+    }
+    
+    func getDetailImage(at index: Int) -> String {
+        return self.detailImages[index]
+    }
+    
+    func getDescriptionImage(at index: Int) -> String {
+        return self.descriptionImages[index]
+    }
+    
+    func getDetailImages() -> [String] {
+        return self.detailImages
+    }
+    
+    func getDescriptionImages() -> [String] {
+        return self.descriptionImages
     }
 }
