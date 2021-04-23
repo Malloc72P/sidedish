@@ -9,6 +9,7 @@ import UIKit
 
 class DetailImageCell: UICollectionViewCell {
     static let identifier = "DetailImageCell"
+    
     let imageView = RemoteImageView()
     
     override init(frame: CGRect) {
@@ -21,6 +22,6 @@ class DetailImageCell: UICollectionViewCell {
     }
     
     private func configure() {
-        backgroundColor = .blue
+        
     }
 }

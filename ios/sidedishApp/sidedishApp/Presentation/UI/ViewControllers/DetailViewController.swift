@@ -32,12 +32,9 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         detailViewModel = DetailViewModel()
-//        detailViewModel.fetchData(path: "main", path: 0)
         configureCollectionView()
         configureDataSource()
         fetchData()
-        dump(detailViewModel.getDetailItem())
-        
     }
     
     private func configureCollectionView() {
@@ -53,19 +50,21 @@ class DetailViewController: UIViewController {
         
         let detailImageCellRegistration = UICollectionView.CellRegistration<DetailImageCell, DataItem> { (cell, indexPath, item) in
             
-            guard let url = URL(string: self.detailViewModel.getDetailItem().getDetailImage(at: indexPath.item)) else { return }
-            cell.imageView.setImage(with: url)
+            if case .detailImages(let image) = item {
+                guard let url = URL(string: image) else { return }
+                cell.backgroundColor = .blue
+                cell.imageView.setImage(with: url)
+            }
         }
         
         let descriptionImageCellRegistration = UICollectionView.CellRegistration<DetailImageCell, DataItem> { (cell, indexPath, item) in
             
-            guard let url = URL(string: self.detailViewModel.getDetailItem().getDescriptionImage(at: indexPath.item)) else { return }
-            cell.imageView.setImage(with: url)
+            if case .descriptionImages(let image) = item {
+                guard let url = URL(string: image) else { return }
+                cell.backgroundColor = .blue
+                cell.imageView.setImage(with: url)
+            }
         }
-        
-//        let InfoCellRegistration = UICollectionView.CellRegistration<TestCell, Int> { (cell, indexPath, identifier) in
-//
-//        }
         
         dataSource = UICollectionViewDiffableDataSource(collectionView: self.collectionView, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
             
@@ -82,8 +81,7 @@ class DetailViewController: UIViewController {
                 self!.updateSnapshot()
             }
             .store(in: &cancellables)
-        detailViewModel.fetchData(path: "main", path: 0)
-      // 파싱한 데이터
+        detailViewModel.fetchData(path: "main", path: 1)
     }
 
     private func updateSnapshot() {

@@ -20,6 +20,7 @@ class DetailNetworkManager: DetailNetworkManagerProtocol {
     
     func getItem(path category: String, path id: Int) -> AnyPublisher<Detail, Error> {
         let endpoint = Endpoint.getDetail(path: category, path: id)
+        print("url",endpoint.url)
         return networkManager.get(type: Detail.self, url: endpoint.url)
     }
 }
