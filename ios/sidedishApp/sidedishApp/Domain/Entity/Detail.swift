@@ -20,10 +20,10 @@ struct Detail: Codable, Hashable, Equatable {
         let salePrice = 0
         let eventBadgeList = [EventBadge(name: "", colorHex: "")]
         let pointRate = 1
-        let isPurchasable = false
+        let purchasable = false
         let deliveryInfo = ""
         let deliveryFee = ""
-        self.item = DetailItem(id: id, detailImages: detailImages, descriptionImages: descriptionImages, name: name, description: description, normalPrice: normalPrice, salePrice: salePrice, eventBadgeList: eventBadgeList, pointRate: pointRate, isPurchasable: isPurchasable, deliveryInfo: deliveryInfo, deliveryFee: deliveryFee)
+        self.item = DetailItem(id: id, detailImages: detailImages, descriptionImages: descriptionImages, name: name, description: description, normalPrice: normalPrice, salePrice: salePrice, eventBadgeList: eventBadgeList, pointRate: pointRate, purchasable: purchasable, deliveryInfo: deliveryInfo, deliveryFee: deliveryFee)
         
     }
     

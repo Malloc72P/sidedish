@@ -18,7 +18,6 @@ class SidedishCell: UICollectionViewCell {
     let thumbnailImageView = RemoteImageView()
     
     private let isSale = false
-    private var badgeList = [EventBadge]()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -50,26 +49,22 @@ class SidedishCell: UICollectionViewCell {
         guard let url = URL(string: item.getThumbnailImage()) else { return }
         self.thumbnailImageView.setImage(with: url)
         
-        badgeList = item.getEventBadgeList()
-        dump(badgeList)
-        badgeList.forEach({ badge in
+        for view in eventBadgeStackView.subviews {
+            view.removeFromSuperview()
+        }
+        
+        item.getEventBadgeList().forEach { eventBadge in
             let badgeLabel = BadgeLabel()
-            badgeLabel.backgroundColor = UIColor.hexStringToUIColor(hex: badge.getColorHex())
-            badgeLabel.text = badge.getName()
-            
             badgeLabel.padding = UIEdgeInsets(top: 5, left: 8, bottom: 5, right: 8)
             badgeLabel.sizeToFit()
             badgeLabel.layer.cornerRadius = 8
             badgeLabel.layer.masksToBounds = true
-            badgeLabel.textColor = .black
+            badgeLabel.textColor = .systemBackground
             badgeLabel.font = UIFont.boldSystemFont(ofSize: 16)
-          
-            eventBadgeStackView.spacing = 8
-            eventBadgeStackView.axis = .horizontal
-            // badgelabel 추가
+            badgeLabel.backgroundColor = UIColor.hexStringToUIColor(hex: eventBadge.getColorHex())
+            badgeLabel.text = eventBadge.getName()
             eventBadgeStackView.addArrangedSubview(badgeLabel)
-            
-        })
+        }
     }
     
     private func configureUI() {
@@ -89,7 +84,9 @@ class SidedishCell: UICollectionViewCell {
         textStack.axis = .vertical
         textStack.alignment = .leading
         textStack.spacing = 8
-
+        
+        eventBadgeStackView.spacing = 8
+        eventBadgeStackView.axis = .horizontal
         
         thumbnailImageView.contentMode = .scaleAspectFill
         thumbnailImageView.layer.cornerRadius = 6
@@ -127,7 +124,8 @@ class SidedishCell: UICollectionViewCell {
 extension UIColor {
     class func hexStringToUIColor (hex:String) -> UIColor {
         var rgbValue:UInt64 = 0
-        Scanner(string: hex).scanHexInt64(&rgbValue)
+        let hexColor = hex.trimmingCharacters(in: ["#"])
+        Scanner(string: hexColor).scanHexInt64(&rgbValue)
         
         return UIColor(
             red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,

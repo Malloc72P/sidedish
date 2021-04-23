@@ -17,26 +17,11 @@ struct DetailItem: Codable, Hashable, Equatable{
     private let salePrice: Int
     private let eventBadgeList: [EventBadge]
     private let pointRate: Int
-    private let isPurchasable: Bool
+    private let purchasable: Bool
     private let deliveryInfo: String
     private let deliveryFee: String
     
-    enum CodingKeys: String, CodingKey {
-        case id
-        case detailImages
-        case descriptionImages
-        case name
-        case description
-        case normalPrice
-        case salePrice
-        case eventBadgeList
-        case pointRate
-        case isPurchasable
-        case deliveryInfo = "delivery_info"
-        case deliveryFee = "delivery_fee"
-    }
-    
-    init(id: Int, detailImages: [String], descriptionImages: [String], name: String, description: String, normalPrice: Int, salePrice: Int, eventBadgeList: [EventBadge],pointRate: Int, isPurchasable: Bool, deliveryInfo: String, deliveryFee: String) {
+    init(id: Int, detailImages: [String], descriptionImages: [String], name: String, description: String, normalPrice: Int, salePrice: Int, eventBadgeList: [EventBadge],pointRate: Int, purchasable: Bool, deliveryInfo: String, deliveryFee: String) {
         self.id = id
         self.detailImages = detailImages
         self.descriptionImages = descriptionImages
@@ -46,7 +31,7 @@ struct DetailItem: Codable, Hashable, Equatable{
         self.salePrice = salePrice
         self.eventBadgeList = eventBadgeList 
         self.pointRate = pointRate
-        self.isPurchasable = isPurchasable
+        self.purchasable = purchasable
         self.deliveryInfo = deliveryInfo
         self.deliveryFee = deliveryFee
     }
