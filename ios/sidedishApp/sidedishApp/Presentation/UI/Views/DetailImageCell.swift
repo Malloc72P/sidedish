@@ -39,7 +39,5 @@ class DetailImageCell: UICollectionViewCell {
         imageView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         imageView.heightAnchor.constraint(equalTo: contentView.heightAnchor).isActive = true
-    
-    
     }
 }

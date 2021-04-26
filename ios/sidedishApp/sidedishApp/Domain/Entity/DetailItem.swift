@@ -51,4 +51,28 @@ struct DetailItem: Codable, Hashable, Equatable{
     func getDescriptionImages() -> [String] {
         return self.descriptionImages
     }
+    
+    func getName() -> String {
+        return self.name
+    }
+    
+    func getDescription() -> String {
+        return self.description
+    }
+    
+    func getNormalPrice() -> Int {
+        return self.normalPrice
+    }
+    
+    func getSalePrice() -> Int {
+        return self.salePrice
+    }
+    
+    func getPointRate() -> Int {
+        return self.pointRate
+    }
+    
+    func getIsPurchasable() -> Bool {
+        return self.purchasable
+    }
 }

@@ -29,7 +29,7 @@ struct DetailLayoutManager {
         return layout
     }
     
-    func createDetailImagesSection() -> NSCollectionLayoutSection {
+    private func createDetailImagesSection() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(375))
@@ -40,7 +40,7 @@ struct DetailLayoutManager {
         return section
     }
     
-    func createInfoSection() -> NSCollectionLayoutSection {
+    private func createInfoSection() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(664))
@@ -50,11 +50,11 @@ struct DetailLayoutManager {
         return section
     }
     
-    func createDescriptionImagesSection() -> NSCollectionLayoutSection {
+    private func createDescriptionImagesSection() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(375))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         
         return section

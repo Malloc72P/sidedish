@@ -65,6 +65,7 @@ class SidedishViewController: UIViewController {
             }
         }
         
+        
         let sideCellRegistration = UICollectionView.CellRegistration<SidedishCell, DataItem> { cell, indexPath, item in
             if case .side(let item) = item {
                 cell.configureCell(item: item)

@@ -42,4 +42,28 @@ struct Detail: Codable, Hashable, Equatable {
     func getDescriptionImages() -> [String] {
         return item.getDescriptionImages()
     }
+    
+    func getName() -> String {
+        return item.getName()
+    }
+    
+    func getDescription() -> String {
+        return item.getDescription()
+    }
+    
+    func getNormalPrice() -> Int {
+        return item.getNormalPrice()
+    }
+    
+    func getSalePrice() -> Int {
+        return item.getSalePrice()
+    }
+    
+    func getPointRate() -> Int {
+        return item.getPointRate()
+    }
+    
+    func getIsPurchasable() -> Bool {
+        return item.getIsPurchasable()
+    }
 }

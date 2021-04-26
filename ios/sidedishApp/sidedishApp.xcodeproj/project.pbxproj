@@ -202,8 +202,8 @@
 				9386C16D262D8C02008645D9 /* Main.swift */,
 				9386C17E262DC52C008645D9 /* Soup.swift */,
 				9386C183262DC53B008645D9 /* Side.swift */,
-				764CE0A8263003A200DED09C /* Detail.swift */,
 				764CE0C62630167E00DED09C /* DetailItem.swift */,
+				764CE0A8263003A200DED09C /* Detail.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
