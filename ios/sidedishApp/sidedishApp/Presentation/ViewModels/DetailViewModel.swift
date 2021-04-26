@@ -36,6 +36,7 @@ class DetailViewModel: DetailViewModelType {
                     case .failure(let error): print(error.localizedDescription) } },
                   receiveValue: { item in
                     self.item = item
+//                    dump(self.item)
                     self.dataChanged.send()
                   })
             .store(in: &cancellables)

@@ -14,4 +14,8 @@ class DetailInfoCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    func configureCell(item: Detail) {
+        
+    }
 }

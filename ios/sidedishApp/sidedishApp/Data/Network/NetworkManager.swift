@@ -16,7 +16,7 @@ class NetworkManager: HttpMethodProtocol {
     func get<T>(type: T.Type, url: URL) -> AnyPublisher<T, Error> where T : Decodable {
         let urlRequest = URLRequest(url: url)
         
-        return URLSession.shared.dataTaskPublisher(for: urlRequest)
+        return URLSession.shared.dataTaskPublisher(for: urlRequest) // -> alarmofier
             .map(\.data)
             .decode(type: T.self, decoder: JSONDecoder())
             .eraseToAnyPublisher()

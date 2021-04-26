@@ -122,4 +122,3 @@ class SidedishViewController: UIViewController {
         self.dataSource.apply(snapshot)
     }
 }
-

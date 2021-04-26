@@ -12,18 +12,19 @@ class DetailViewController: UIViewController {
     
     enum Section: Int, CaseIterable {
         case detailImages
-        //case info
+        case info
         case descriptionImages
     }
     
     enum DataItem: Hashable {
         case detailImages(String)
-        //case info(Detail)
+        case info(Detail)
         case descriptionImages(String)
     }
     
     private var category: String!
     private var id: Int!
+    
     private var cancellables: Set<AnyCancellable> = []
     private var detailViewModel: DetailViewModelType!
     private var collectionView: UICollectionView!
@@ -33,7 +34,6 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         detailViewModel = DetailViewModel()
         configureCollectionView()
-        configureDataSource()
         fetchData()
     }
     
@@ -43,30 +43,32 @@ class DetailViewController: UIViewController {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         collectionView.backgroundColor = .systemBackground
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        collectionView.contentMode = .scaleAspectFit
         view.addSubview(collectionView)
-    }
-    
-    func configureDataSource() {
         
-        let detailImageCellRegistration = UICollectionView.CellRegistration<DetailImageCell, DataItem> { (cell, indexPath, item) in
-            
-            if case .detailImages(let image) = item {
-                guard let url = URL(string: image) else { return }
-                cell.backgroundColor = .blue
-                cell.imageView.setImage(with: url)
+        let detailImageCellRegistration = UICollectionView.CellRegistration<DetailImageCell, DataItem> { (cell, indexPath, image) in
+            if case .detailImages(let image) = image {
+                cell.configureCell(image: image)
             }
         }
         
-        let descriptionImageCellRegistration = UICollectionView.CellRegistration<DetailImageCell, DataItem> { (cell, indexPath, item) in
+        let detailInfoCellRegistration = UICollectionView.CellRegistration<DetailInfoCell, DataItem> { (cell, indexPath, item) in
             
-            if case .descriptionImages(let image) = item {
-                guard let url = URL(string: image) else { return }
-                cell.backgroundColor = .blue
-                cell.imageView.setImage(with: url)
+            if case .detailImages(let item) = item {
+                cell.configureCell(item: item)
+            }
+        }
+        
+        let descriptionImageCellRegistration = UICollectionView.CellRegistration<DetailImageCell, DataItem> { (cell, indexPath, image) in
+            
+            if case .descriptionImages(let image) = image {
+                cell.configureCell(image: image)
             }
         }
         
         dataSource = UICollectionViewDiffableDataSource(collectionView: self.collectionView, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
+            
+//            guard let sectionKind = Section(rawValue: indexPath.section) else  { return UICollectionViewCell() }
             
             return Section(rawValue: indexPath.section)! == .detailImages ?
             collectionView.dequeueConfiguredReusableCell(using: detailImageCellRegistration, for: indexPath, item: item) :
