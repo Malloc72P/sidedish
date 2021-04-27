@@ -37,8 +37,18 @@ class DetailViewModel: DetailViewModelType {
                     case .failure(_): break } },
                   receiveValue: { item in
                     self.item = item
+                    dump(self.item)
+                    
                     self.dataChanged.send()
                   })
             .store(in: &cancellables)
+    }
+    
+    func getDetailImages() -> Images {
+        return item.getDetailImages()
+    }
+    
+    func getDescriptionImages() -> Images {
+        return item.getDescriptionImages()
     }
 }

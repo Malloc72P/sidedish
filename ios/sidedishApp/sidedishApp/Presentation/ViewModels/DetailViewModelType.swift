@@ -11,5 +11,8 @@ import Combine
 protocol DetailViewModelType {
     var dataChanged: PassthroughSubject<Void, Never> { get }
     func getDetailItem() -> Detail
+    func getDetailImages() -> Images
+    
+    func getDescriptionImages() -> Images
     func fetchData(path category: String, path id: Int)
 }

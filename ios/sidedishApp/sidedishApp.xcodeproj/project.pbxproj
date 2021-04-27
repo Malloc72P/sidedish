@@ -19,6 +19,7 @@
 		767DF7AA2637B46400642F1C /* DetailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767DF7A82637B46400642F1C /* DetailImageCell.swift */; };
 		767DF7B42637B4C100642F1C /* DetailInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767DF7B22637B4C100642F1C /* DetailInfoCell.swift */; };
 		767DF7B52637B4C100642F1C /* DetailInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 767DF7B32637B4C100642F1C /* DetailInfoCell.xib */; };
+		767DF7BA2637E1F800642F1C /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767DF7B92637E1F800642F1C /* Images.swift */; };
 		937326DC263147A000FBF7C3 /* SidedishFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937326DB263147A000FBF7C3 /* SidedishFactory.swift */; };
 		9386C100262D7400008645D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C0FF262D7400008645D9 /* AppDelegate.swift */; };
 		9386C102262D7400008645D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C101262D7400008645D9 /* SceneDelegate.swift */; };
@@ -74,6 +75,7 @@
 		767DF7A82637B46400642F1C /* DetailImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImageCell.swift; sourceTree = "<group>"; };
 		767DF7B22637B4C100642F1C /* DetailInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoCell.swift; sourceTree = "<group>"; };
 		767DF7B32637B4C100642F1C /* DetailInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailInfoCell.xib; sourceTree = "<group>"; };
+		767DF7B92637E1F800642F1C /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		937326DB263147A000FBF7C3 /* SidedishFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidedishFactory.swift; sourceTree = "<group>"; };
 		9386C0FC262D7400008645D9 /* sidedishApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sidedishApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9386C0FF262D7400008645D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				9386C16D262D8C02008645D9 /* Category.swift */,
 				764CE0A8263003A200DED09C /* Detail.swift */,
 				764CE0C62630167E00DED09C /* DetailItem.swift */,
+				767DF7B92637E1F800642F1C /* Images.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 				9386C156262D86C3008645D9 /* LayoutManager.swift in Sources */,
 				9386C16E262D8C02008645D9 /* Category.swift in Sources */,
 				9386C189262E4DB2008645D9 /* SectionHeader.swift in Sources */,
+				767DF7BA2637E1F800642F1C /* Images.swift in Sources */,
 				9386C174262DB13C008645D9 /* SidedishCell.swift in Sources */,
 				9386C18E262E51F1008645D9 /* Endpoint.swift in Sources */,
 				9386C102262D7400008645D9 /* SceneDelegate.swift in Sources */,

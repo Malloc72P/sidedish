@@ -135,6 +135,10 @@ extension SidedishViewController: UICollectionViewDelegate {
                 switch sectionKind {
                 case .main:
                     pushDetailViewController(category: "main", id: sidedishViewModel.getMainItems()[indexPath.item].getId())
+                case .soup:
+                    pushDetailViewController(category: "soup", id: sidedishViewModel.getMainItems()[indexPath.item].getId())
+                case .side:
+                    pushDetailViewController(category: "side", id: sidedishViewModel.getMainItems()[indexPath.item].getId())
                 default: break
                 }
     }

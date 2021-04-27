@@ -17,9 +17,9 @@ class DetailViewController: UIViewController {
     }
     
     enum DataItem: Hashable {
-        case detailImages(String)
+        case detailImages(Images)
         case info(Detail)
-        case descriptionImages(String)
+        case descriptionImages(Images)
     }
     
     var category: String!
@@ -45,9 +45,9 @@ class DetailViewController: UIViewController {
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(collectionView)
         
-        let detailImageCellRegistration = UICollectionView.CellRegistration<DetailImageCell, DataItem>.init(handler: { (cell, indexPath, image) in
-            if case .detailImages(let image) = image {
-                cell.configureCell(image: image)
+        let detailImageCellRegistration = UICollectionView.CellRegistration<DetailImageCell, DataItem>.init(handler: { (cell, indexPath, images) in
+            if case .detailImages(let images) = images {
+                cell.configureCell(image: images.getImage(at: indexPath.row))
             }
         })
         
@@ -59,10 +59,10 @@ class DetailViewController: UIViewController {
             }
         })
         
-        let descriptionImageCellRegistration = UICollectionView.CellRegistration<DetailImageCell, DataItem>.init(handler: { (cell, indexPath, image) in
+        let descriptionImageCellRegistration = UICollectionView.CellRegistration<DetailImageCell, DataItem>.init(handler: { (cell, indexPath, images) in
             
-            if case .descriptionImages(let image) = image {
-                cell.configureCell(image: image)
+            if case .descriptionImages(let images) = images {
+                cell.configureCell(image: images.getImage(at: indexPath.row))
             }
         })
         
@@ -85,8 +85,6 @@ class DetailViewController: UIViewController {
         })
     }
     
-    
-    
     private func fetchData() {
         detailViewModel.dataChanged
             .receive(on: DispatchQueue.main)
@@ -94,18 +92,18 @@ class DetailViewController: UIViewController {
                 self!.updateSnapshot()
             }
             .store(in: &cancellables)
-        detailViewModel.fetchData(path: category, path: id)
+        detailViewModel.fetchData(path: category, path: id)  
     }
 
     private func updateSnapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, DataItem>()
         snapshot.appendSections(Section.allCases)
     
-        snapshot.appendItems(detailViewModel.getDetailItem().getDetailImages().map{ DataItem.detailImages($0) }, toSection: .detailImages)
+        snapshot.appendItems([DataItem.detailImages(detailViewModel.getDetailImages())], toSection: .detailImages)
         
         snapshot.appendItems([DataItem.info(detailViewModel.getDetailItem())], toSection: .info)
             
-        snapshot.appendItems(detailViewModel.getDetailItem().getDescriptionImages().map{DataItem.descriptionImages($0)}, toSection: .descriptionImages)
+        snapshot.appendItems([DataItem.descriptionImages(detailViewModel.getDescriptionImages())], toSection: .descriptionImages)
         
         dataSource.apply(snapshot)
     }

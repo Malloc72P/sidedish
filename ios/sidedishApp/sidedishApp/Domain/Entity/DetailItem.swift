@@ -9,8 +9,8 @@ import Foundation
 
 struct DetailItem: Codable, Hashable, Equatable{
     private let id: Int
-    private let detailImages: [String]
-    private let descriptionImages: [String]
+    private let detailImages: Images
+    private let descriptionImages: Images
     private let name: String
     private let description: String
     private let normalPrice: Int
@@ -21,7 +21,7 @@ struct DetailItem: Codable, Hashable, Equatable{
     private let deliveryInfo: String
     private let deliveryFee: String
     
-    init(id: Int, detailImages: [String], descriptionImages: [String], name: String, description: String, normalPrice: Int, salePrice: Int, eventBadgeList: [EventBadge],pointRate: Int, purchasable: Bool, deliveryInfo: String, deliveryFee: String) {
+    init(id: Int, detailImages: Images, descriptionImages: Images, name: String, description: String, normalPrice: Int, salePrice: Int, eventBadgeList: [EventBadge],pointRate: Int, purchasable: Bool, deliveryInfo: String, deliveryFee: String) {
         self.id = id
         self.detailImages = detailImages
         self.descriptionImages = descriptionImages
@@ -37,19 +37,19 @@ struct DetailItem: Codable, Hashable, Equatable{
     }
     
     func getDetailImage(at index: Int) -> String {
-        return self.detailImages[index]
+        return self.detailImages.getImage(at: index)
     }
     
     func getDescriptionImage(at index: Int) -> String {
-        return self.descriptionImages[index]
+        return self.descriptionImages.getImage(at: index)
     }
     
     func getDetailImages() -> [String] {
-        return self.detailImages
+        return self.detailImages.getImages()
     }
     
     func getDescriptionImages() -> [String] {
-        return self.descriptionImages
+        return self.descriptionImages.getImages()
     }
     
     func getName() -> String {
@@ -76,3 +76,4 @@ struct DetailItem: Codable, Hashable, Equatable{
         return self.purchasable
     }
 }
+

@@ -12,8 +12,8 @@ struct Detail: Codable, Hashable, Equatable {
     
     init() {
         let id = 0
-        let detailImages = [""]
-        let descriptionImages = [""]
+        let detailImages = Images()
+        let descriptionImages = Images()
         let name = ""
         let description = ""
         let normalPrice = 0
@@ -35,12 +35,13 @@ struct Detail: Codable, Hashable, Equatable {
         return self.item.getDescriptionImage(at: index)
     }
     
-    func getDetailImages() -> [String] {
-        return item.getDetailImages()
+    func getDetailImages() -> Images {
+        return Images(images: self.item.getDetailImages())
     }
     
-    func getDescriptionImages() -> [String] {
-        return item.getDescriptionImages()
+    func getDescriptionImages() -> Images {
+        return Images(images: self.item.getDescriptionImages())
+        
     }
     
     func getName() -> String {
@@ -67,3 +68,4 @@ struct Detail: Codable, Hashable, Equatable {
         return item.getIsPurchasable()
     }
 }
+
