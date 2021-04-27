@@ -27,14 +27,21 @@ class DetailViewModel: DetailViewModelType {
     func getDetailItem() -> Detail {
         return self.item
     }
-    
-    func getDetailImages() -> Images {
+    func getDetailImages() -> [Image] {
         return item.getDetailImages()
     }
     
-    func getDescriptionImages() -> Images {
+    func getDescriptionImages() -> [Image] {
         return item.getDescriptionImages()
     }
+    
+//    func getDetailImages() -> Image {
+//        return item.getDetailImage(at: <#T##Int#>)
+//    }
+//    
+//    func getDescriptionImages() -> Image {
+//        return item.getDescriptionImages()
+//    }
     
     func fetchData(path category: String, path id: Int) {
        detailUseCase.getItem(path: category, path: id)

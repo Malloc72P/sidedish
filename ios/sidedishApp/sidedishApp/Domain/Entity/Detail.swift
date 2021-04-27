@@ -27,21 +27,20 @@ struct Detail: Codable, Hashable, Equatable {
         
     }
     
-    func getDetailImage(at index: Int) -> String {
+    func getDetailImage(at index: Int) -> Image {
         return self.item.getDetailImage(at: index)
     }
     
-    func getDescriptionImage(at index: Int) -> String{
+    func getDescriptionImage(at index: Int) -> Image {
         return self.item.getDescriptionImage(at: index)
     }
     
-    func getDetailImages() -> Images {
-        return Images(images: self.item.getDetailImages())
+    func getDetailImages() -> [Image] {
+        return item.getDetailImages()
     }
     
-    func getDescriptionImages() -> Images {
-        return Images(images: self.item.getDescriptionImages())
-        
+    func getDescriptionImages() -> [Image] {
+        return item.getDetailImages()
     }
     
     func getName() -> String {

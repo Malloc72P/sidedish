@@ -36,20 +36,20 @@ struct DetailItem: Codable, Hashable, Equatable{
         self.deliveryFee = deliveryFee
     }
     
-    func getDetailImage(at index: Int) -> String {
-        return self.detailImages[index]
+    func getDetailImage(at index: Int) -> Image {
+        return Image(image: self.detailImages[index])
     }
     
-    func getDescriptionImage(at index: Int) -> String {
-        return self.descriptionImages[index]
+    func getDescriptionImage(at index: Int) -> Image {
+        return Image(image: self.descriptionImages[index])
     }
     
-    func getDetailImages() -> [String] {
-        return self.detailImages
+    func getDetailImages() -> [Image] {
+        return self.detailImages.map{Image(image: $0)}
     }
     
-    func getDescriptionImages() -> [String] {
-        return self.descriptionImages
+    func getDescriptionImages() -> [Image] {
+        return self.descriptionImages.map{Image(image: $0)}
     }
     
     func getName() -> String {

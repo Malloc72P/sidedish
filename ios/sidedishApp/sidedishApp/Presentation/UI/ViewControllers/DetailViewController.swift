@@ -17,9 +17,9 @@ class DetailViewController: UIViewController {
     }
     
     enum DataItem: Hashable {
-        case detailImages(Images)
+        case detailImages(Image)
         case info(Detail)
-        case descriptionImages(Images)
+        case descriptionImages(Image)
     }
     
     var category: String!
@@ -45,9 +45,11 @@ class DetailViewController: UIViewController {
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(collectionView)
         
-        let detailImageCellRegistration = UICollectionView.CellRegistration<DetailImageCell, DataItem>.init(handler: { (cell, indexPath, images) in
-            if case .detailImages(let images) = images {
-                cell.configureCell(image: images.getImage(at: indexPath.row))
+        let detailImageCellRegistration = UICollectionView.CellRegistration<DetailImageCell, DataItem>.init(handler: { (cell, indexPath, image) in
+           
+            dump(image)
+            if case .detailImages(let image) = image {
+                cell.configureCell(image: image.getImage())
             }
         })
         
@@ -59,10 +61,10 @@ class DetailViewController: UIViewController {
             }
         })
         
-        let descriptionImageCellRegistration = UICollectionView.CellRegistration<DetailImageCell, DataItem>.init(handler: { (cell, indexPath, images) in
+        let descriptionImageCellRegistration = UICollectionView.CellRegistration<DetailImageCell, DataItem>.init(handler: { (cell, indexPath, image) in
             
-            if case .descriptionImages(let images) = images {
-                cell.configureCell(image: images.getImage(at: indexPath.row))
+            if case .descriptionImages(let image) = image {
+                cell.configureCell(image: image.getImage())
             }
         })
         
@@ -98,13 +100,12 @@ class DetailViewController: UIViewController {
     private func updateSnapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, DataItem>()
         snapshot.appendSections(Section.allCases)
-    
-        snapshot.appendItems([DataItem.detailImages(detailViewModel.getDetailImages())], toSection: .detailImages)
-        print("detailViewModel.getDetailImages()", detailViewModel.getDetailImages())
+
+        snapshot.appendItems(detailViewModel.getDetailImages().map{DataItem.detailImages($0)}, toSection: .detailImages)
         
         snapshot.appendItems([DataItem.info(detailViewModel.getDetailItem())], toSection: .info)
             
-        snapshot.appendItems([DataItem.descriptionImages(detailViewModel.getDescriptionImages())], toSection: .descriptionImages)
+        snapshot.appendItems(detailViewModel.getDescriptionImages().map{DataItem.descriptionImages($0)}, toSection: .descriptionImages)
         
         dataSource.apply(snapshot)
     }
