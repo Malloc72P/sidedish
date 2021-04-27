@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Detail: Codable {
+struct Detail: Codable, Hashable, Equatable {
     private let item: DetailItem
     
     init() {
@@ -20,10 +20,50 @@ struct Detail: Codable {
         let salePrice = 0
         let eventBadgeList = [EventBadge(name: "", colorHex: "")]
         let pointRate = 1
-        let isPurchasable = false
+        let purchasable = false
         let deliveryInfo = ""
         let deliveryFee = ""
-        self.item = DetailItem(id: id, detailImages: detailImages, descriptionImages: descriptionImages, name: name, description: description, normalPrice: normalPrice, salePrice: salePrice, eventBadgeList: eventBadgeList, pointRate: pointRate, isPurchasable: isPurchasable, deliveryInfo: deliveryInfo, deliveryFee: deliveryFee)
+        self.item = DetailItem(id: id, detailImages: detailImages, descriptionImages: descriptionImages, name: name, description: description, normalPrice: normalPrice, salePrice: salePrice, eventBadgeList: eventBadgeList, pointRate: pointRate, purchasable: purchasable, deliveryInfo: deliveryInfo, deliveryFee: deliveryFee)
         
+    }
+    
+    func getDetailImage(at index: Int) -> String {
+        return self.item.getDetailImage(at: index)
+    }
+    
+    func getDescriptionImage(at index: Int) -> String{
+        return self.item.getDescriptionImage(at: index)
+    }
+    
+    func getDetailImages() -> [String] {
+        return item.getDetailImages()
+    }
+    
+    func getDescriptionImages() -> [String] {
+        return item.getDescriptionImages()
+    }
+    
+    func getName() -> String {
+        return item.getName()
+    }
+    
+    func getDescription() -> String {
+        return item.getDescription()
+    }
+    
+    func getNormalPrice() -> Int {
+        return item.getNormalPrice()
+    }
+    
+    func getSalePrice() -> Int {
+        return item.getSalePrice()
+    }
+    
+    func getPointRate() -> Int {
+        return item.getPointRate()
+    }
+    
+    func getIsPurchasable() -> Bool {
+        return item.getIsPurchasable()
     }
 }
