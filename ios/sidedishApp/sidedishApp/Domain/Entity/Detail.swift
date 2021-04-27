@@ -12,8 +12,8 @@ struct Detail: Codable, Hashable, Equatable {
     
     init() {
         let id = 0
-        let detailImages = Images()
-        let descriptionImages = Images()
+        let detailImages = [""]
+        let descriptionImages = [""]
         let name = ""
         let description = ""
         let normalPrice = 0

@@ -100,6 +100,7 @@ class DetailViewController: UIViewController {
         snapshot.appendSections(Section.allCases)
     
         snapshot.appendItems([DataItem.detailImages(detailViewModel.getDetailImages())], toSection: .detailImages)
+        print("detailViewModel.getDetailImages()", detailViewModel.getDetailImages())
         
         snapshot.appendItems([DataItem.info(detailViewModel.getDetailItem())], toSection: .info)
             

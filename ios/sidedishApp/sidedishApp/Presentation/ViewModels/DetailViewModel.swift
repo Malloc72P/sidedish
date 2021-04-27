@@ -28,6 +28,14 @@ class DetailViewModel: DetailViewModelType {
         return self.item
     }
     
+    func getDetailImages() -> Images {
+        return item.getDetailImages()
+    }
+    
+    func getDescriptionImages() -> Images {
+        return item.getDescriptionImages()
+    }
+    
     func fetchData(path category: String, path id: Int) {
        detailUseCase.getItem(path: category, path: id)
             .receive(on: DispatchQueue.global())
@@ -42,13 +50,5 @@ class DetailViewModel: DetailViewModelType {
                     self.dataChanged.send()
                   })
             .store(in: &cancellables)
-    }
-    
-    func getDetailImages() -> Images {
-        return item.getDetailImages()
-    }
-    
-    func getDescriptionImages() -> Images {
-        return item.getDescriptionImages()
     }
 }
