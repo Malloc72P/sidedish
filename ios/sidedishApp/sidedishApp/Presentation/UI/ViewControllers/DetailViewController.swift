@@ -22,8 +22,8 @@ class DetailViewController: UIViewController {
         case descriptionImages(String)
     }
     
-    private var category: String!
-    private var id: Int!
+    var category: String!
+    var id: Int!
     
     private var cancellables: Set<AnyCancellable> = []
     private var detailViewModel: DetailViewModelType!
@@ -94,7 +94,7 @@ class DetailViewController: UIViewController {
                 self!.updateSnapshot()
             }
             .store(in: &cancellables)
-        detailViewModel.fetchData(path: "main", path: 1)
+        detailViewModel.fetchData(path: category, path: id)
     }
 
     private func updateSnapshot() {

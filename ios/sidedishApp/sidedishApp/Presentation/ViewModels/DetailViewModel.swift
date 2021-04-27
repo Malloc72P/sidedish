@@ -10,6 +10,7 @@ import Combine
 
 class DetailViewModel: DetailViewModelType {
     private var item = Detail()
+    
     private(set) var dataChanged = PassthroughSubject<Void, Never>()
     private var cancellables = Set<AnyCancellable>()
     private var detailUseCase: DetailUseCasePort!

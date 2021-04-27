@@ -21,9 +21,19 @@ class SidedishViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         sidedishViewModel = SidedishViewModel()
         configureCollectionView()
         congigureFetchData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        super.viewWillAppear(animated)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        super.viewWillDisappear(animated)
     }
     
     private func congigureFetchData() {
@@ -39,6 +49,7 @@ class SidedishViewController: UIViewController {
         self.view.addSubview(self.collectionView)
         self.collectionView.backgroundColor = .systemBackground
         self.collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.collectionView.delegate = self
         
         let mainCellRegistration = UICollectionView.CellRegistration<SidedishCell, Item> { cell, indexPath, item in
             cell.configureCell(item: item)
@@ -114,3 +125,33 @@ class SidedishViewController: UIViewController {
         self.dataSource.apply(snapshot)
     }
 }
+
+extension SidedishViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+       
+        guard let sectionKind = Section(rawValue: indexPath.section) else {
+                    fatalError("Unhandled section")
+                }
+                switch sectionKind {
+                case .main:
+                    pushDetailViewController(category: "main", id: sidedishViewModel.getMainItems()[indexPath.item].getId())
+                default: break
+                }
+    }
+    
+    func pushDetailViewController(category: String, id: Int) {
+        let storyboard = UIStoryboard(name: "Main", bundle: .main)
+                let detailViewController = storyboard.instantiateViewController(identifier: "DetailViewController")
+        if let detailViewController = detailViewController as? DetailViewController {
+            
+            detailViewController.category = category
+            detailViewController.id = id
+            
+            self.navigationController?.pushViewController(detailViewController, animated: true)
+           
+        }
+    }
+    
+
+}
+

@@ -16,6 +16,10 @@ struct Item: Codable, Equatable, Hashable {
     private let salePrice: Int
     private let eventBadgeList: [EventBadge]
     
+    func getId() -> Int {
+        return self.id
+    }
+    
     func getName() -> String {
         return self.name
     }
