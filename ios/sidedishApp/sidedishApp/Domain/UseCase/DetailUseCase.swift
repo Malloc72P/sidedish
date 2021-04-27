@@ -23,6 +23,8 @@ class DetailUseCase: DetailUseCasePort {
     func getItem(path category: String, path id: Int) -> AnyPublisher<Detail, Error> {
         return detailNetworkManager.getItem(path: category, path: id)
     }
+    
+    
 }
 
 

@@ -10,7 +10,6 @@ import Combine
 
 class DetailViewModel: DetailViewModelType {
     private var item = Detail()
-    
     private(set) var dataChanged = PassthroughSubject<Void, Never>()
     private var cancellables = Set<AnyCancellable>()
     private var detailUseCase: DetailUseCasePort!
@@ -27,6 +26,7 @@ class DetailViewModel: DetailViewModelType {
     func getDetailItem() -> Detail {
         return self.item
     }
+    
     func getDetailImages() -> [Image] {
         return item.getDetailImages()
     }
@@ -35,16 +35,8 @@ class DetailViewModel: DetailViewModelType {
         return item.getDescriptionImages()
     }
     
-//    func getDetailImages() -> Image {
-//        return item.getDetailImage(at: <#T##Int#>)
-//    }
-//    
-//    func getDescriptionImages() -> Image {
-//        return item.getDescriptionImages()
-//    }
-    
     func fetchData(path category: String, path id: Int) {
-       detailUseCase.getItem(path: category, path: id)
+        detailUseCase.getItem(path: category, path: id)
             .receive(on: DispatchQueue.global())
             .sink(receiveCompletion: { (result)
                     in switch result {
@@ -52,7 +44,6 @@ class DetailViewModel: DetailViewModelType {
                     case .failure(_): break } },
                   receiveValue: { item in
                     self.item = item
-                    dump(self.item)
                     
                     self.dataChanged.send()
                   })

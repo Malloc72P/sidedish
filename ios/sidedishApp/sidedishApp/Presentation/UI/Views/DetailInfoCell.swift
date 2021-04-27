@@ -6,14 +6,16 @@
 //
 
 import UIKit
+import Combine
 
 class DetailInfoCell: UICollectionViewCell {
     class var reuseIdentifier: String {
         return "\(self)"
     }
-
-    @Published var quantity = 0
-    @Published var totalPrice = 0
+    
+    private var cancellables: Set<AnyCancellable> = []
+    private var orderViewModel: OrderViewModel!
+    private var item: Detail!
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -32,31 +34,45 @@ class DetailInfoCell: UICollectionViewCell {
     @IBOutlet weak var eventBadgeStackView: UIStackView!
     
     @IBAction func addQuantityButtonTouched(_ sender: Any) {
-        quantity += 1
-        
+        self.orderViewModel.plus(price: self.item.getSalePrice())
     }
+    
     @IBAction func subtractQuantituButtonTouched(_ sender: Any) {
-        quantity -= 1
+        self.orderViewModel.minus(price: self.item.getSalePrice())
     }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         configureUI()
     }
     
     func configureCell(item: Detail) {
-
         nameLabel.text = item.getName()
         descriptionLabel.text = item.getDescription()
         salePriceLabel.text = "\(item.getSalePrice())원"
         normalPriceLabel.text = "\(item.getNormalPrice())원"
         pointPriceLabel.text = "\(item.getPointRate())"
-        quantityLabel.text = "\(quantity)"
-        totalPriceLabel.text = "\(totalPrice)원"
+        self.orderViewModel = OrderViewModel(order: (1, item.getSalePrice()))
+        self.item = item
+        self.fetchOrderData()
+        self.updateOrder()
     }
     
     private func configureUI() {
         orderButton.layer.cornerRadius = 5
     }
     
-
+    private func fetchOrderData() {
+        self.orderViewModel.dataChanged
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.updateOrder()
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func updateOrder() {
+        self.quantityLabel.text = "\(orderViewModel.getOder().quantity)"
+        self.totalPriceLabel.text = "\(orderViewModel.getOder().amount)"
+    }
 }
