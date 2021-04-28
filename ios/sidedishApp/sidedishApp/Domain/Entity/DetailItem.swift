@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DetailItem: Codable, Hashable, Equatable{
+struct DetailItem: Codable, Hashable, Equatable {
     private let id: Int
     private let detailImages: [String]
     private let descriptionImages: [String]

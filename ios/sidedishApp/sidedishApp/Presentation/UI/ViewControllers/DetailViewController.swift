@@ -91,7 +91,7 @@ class DetailViewController: UIViewController {
         detailViewModel.dataChanged
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
-                self!.updateSnapshot()
+                self?.updateSnapshot()
             }
             .store(in: &cancellables)
         detailViewModel.fetchData(path: category, path: id)  
@@ -102,9 +102,7 @@ class DetailViewController: UIViewController {
         snapshot.appendSections(Section.allCases)
 
         snapshot.appendItems(detailViewModel.getDetailImages().map{DataItem.detailImages($0)}, toSection: .detailImages)
-        
         snapshot.appendItems([DataItem.info(detailViewModel.getDetailItem())], toSection: .info)
-            
         snapshot.appendItems(detailViewModel.getDescriptionImages().map{DataItem.descriptionImages($0)}, toSection: .descriptionImages)
         
         dataSource.apply(snapshot)

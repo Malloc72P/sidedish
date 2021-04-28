@@ -14,7 +14,7 @@ class DetailInfoCell: UICollectionViewCell {
     }
     
     private var cancellables: Set<AnyCancellable> = []
-    private var orderViewModel: OrderViewModel!
+    private var orderViewModel: OrderViewModelType!
     private var item: Detail!
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -29,6 +29,7 @@ class DetailInfoCell: UICollectionViewCell {
     @IBOutlet weak var orderButton: UIButton!
 
     @IBAction func orderButtonTouched(_ sender: Any) {
+        self.orderViewModel.order(quantity: orderViewModel.getOder().quantity, path: "side", path: 7)
     }
 
     @IBOutlet weak var eventBadgeStackView: UIStackView!

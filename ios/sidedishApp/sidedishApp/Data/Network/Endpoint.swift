@@ -44,4 +44,8 @@ struct Endpoint {
     static func getDetail(path category: String, path id: Int) -> Self {
         return Endpoint(path: "/\(category)/\(id)")
     }
+    
+    static func post(path category: String, path id: Int) -> Self {
+        return Endpoint(path: "/\(category)/\(id)")
+    }
 }

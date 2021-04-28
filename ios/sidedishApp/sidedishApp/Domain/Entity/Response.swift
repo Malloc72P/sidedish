@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+struct Response: Decodable {
+    private let reason: String
+    
+    init(reason: String = "") {
+        self.reason = reason
+    }
+    
+    func getReason() -> String {
+        return self.reason
+    }
+}
