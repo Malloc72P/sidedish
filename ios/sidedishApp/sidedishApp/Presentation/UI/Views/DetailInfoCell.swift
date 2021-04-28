@@ -52,6 +52,12 @@ class DetailInfoCell: UICollectionViewCell {
     func configureCell(item: Detail) {
         nameLabel.text = item.getName()
         descriptionLabel.text = item.getDescription()
+        orderButton.isEnabled = item.isPurchasable()
+        
+        if !item.isPurchasable() {
+            orderButton.backgroundColor = .systemGray5
+            orderButton.setTitle("일시품절", for: .disabled)
+        }
 
         pointPriceLabel.text = "\(item.getPointRate())"
         self.orderViewModel = OrderViewModel(order: (1, item.getSalePrice()))

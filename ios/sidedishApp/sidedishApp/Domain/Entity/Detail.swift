@@ -70,5 +70,9 @@ struct Detail: Codable, Hashable, Equatable {
     func getEventBadgeList() -> [EventBadge] {
         return item.getEventBadgeList()
     }
+    
+    func isPurchasable() -> Bool {
+        return item.isPurchasable()
+    }
 }
 

@@ -79,5 +79,9 @@ struct DetailItem: Codable, Hashable, Equatable {
     func getEventBadgeList() -> [EventBadge] {
         return eventBadgeList
     }
+    
+    func isPurchasable() -> Bool {
+        return self.purchasable
+    }
 }
 
