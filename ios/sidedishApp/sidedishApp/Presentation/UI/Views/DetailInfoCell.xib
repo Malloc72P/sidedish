@@ -46,7 +46,7 @@
                                     <constraint firstAttribute="height" constant="35" id="s7f-6K-JWv"/>
                                 </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tiv-bB-lxc">
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Tiv-bB-lxc">
                                 <rect key="frame" x="0.0" y="129" width="343" height="50"/>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3bh-SF-z12">
@@ -66,7 +66,6 @@
                             <constraint firstItem="3bh-SF-z12" firstAttribute="leading" secondItem="jgB-1x-XHZ" secondAttribute="leading" id="Q17-Mk-oot"/>
                             <constraint firstItem="3bh-SF-z12" firstAttribute="trailing" secondItem="jgB-1x-XHZ" secondAttribute="trailing" id="ZW0-lq-GP0"/>
                             <constraint firstAttribute="trailing" secondItem="HGu-dL-NBm" secondAttribute="trailing" id="ZcW-Ir-m38"/>
-                            <constraint firstItem="Tiv-bB-lxc" firstAttribute="trailing" secondItem="jgB-1x-XHZ" secondAttribute="trailing" id="e0J-Dq-lIU"/>
                             <constraint firstItem="jgB-1x-XHZ" firstAttribute="trailing" secondItem="HGu-dL-NBm" secondAttribute="trailing" id="fjI-b8-uop"/>
                             <constraint firstItem="jgB-1x-XHZ" firstAttribute="leading" secondItem="HGu-dL-NBm" secondAttribute="leading" id="tuc-RQ-bzq"/>
                         </constraints>
