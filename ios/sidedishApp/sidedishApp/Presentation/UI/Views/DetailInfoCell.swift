@@ -52,13 +52,14 @@ class DetailInfoCell: UICollectionViewCell {
     func configureCell(item: Detail) {
         nameLabel.text = item.getName()
         descriptionLabel.text = item.getDescription()
-//        salePriceLabel.text = "\(item.getSalePrice())원"
-//        normalPriceLabel.text = "\(item.getNormalPrice())원"
+
         pointPriceLabel.text = "\(item.getPointRate())"
         self.orderViewModel = OrderViewModel(order: (1, item.getSalePrice()))
         self.item = item
         self.fetchOrderData()
         self.updateOrder()
+        
+        priceStackView.configureDetail(normalPrice: item.getNormalPrice(), salePrice: item.getSalePrice())
         
         for view in eventBadgeStackView.subviews {
             view.removeFromSuperview()

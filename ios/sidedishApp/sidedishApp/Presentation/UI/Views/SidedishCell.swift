@@ -32,14 +32,10 @@ class SidedishCell: UICollectionViewCell {
         self.nameLabel.text = item.getName()
         self.descriptionLabel.text = item.getDescription()
         
-//        self.normalPriceLabel.text = "\(item.getNormalPrice())"
-//        self.salePriceLabel.text = "\(item.getSalePrice())"
-//        self.salePriceLabel.isHidden = item.isSale()
-        
         guard let url = URL(string: item.getThumbnailImage()) else { return }
         self.thumbnailImageView.setImage(with: url)
         
-        priceStack.configureStackView(normalPrice: item.getNormalPrice(), salePrice: item.getSalePrice())
+        priceStack.configureSideDish(normalPrice: item.getNormalPrice(), salePrice: item.getSalePrice())
         
         for view in eventBadgeStackView.subviews {
             view.removeFromSuperview()

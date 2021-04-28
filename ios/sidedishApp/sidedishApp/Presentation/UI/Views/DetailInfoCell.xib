@@ -42,20 +42,6 @@
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9KC-5s-bRb" customClass="PriceStackView" customModule="sidedishApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="80" width="153.5" height="35"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5,500원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eG3-cd-rzw">
-                                        <rect key="frame" x="0.0" y="0.0" width="89" height="35"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6,000원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2tj-so-mXj">
-                                        <rect key="frame" x="97" y="0.0" width="56.5" height="35"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <color key="textColor" systemColor="systemGray3Color"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="s7f-6K-JWv"/>
                                 </constraints>
