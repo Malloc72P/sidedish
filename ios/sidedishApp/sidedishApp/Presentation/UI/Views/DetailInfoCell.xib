@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -40,7 +40,7 @@
                                 <color key="textColor" systemColor="systemGray3Color"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9KC-5s-bRb">
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9KC-5s-bRb" customClass="PriceStackView" customModule="sidedishApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="80" width="153.5" height="35"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5,500원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eG3-cd-rzw">
@@ -296,14 +296,13 @@
                 <outlet property="descriptionLabel" destination="jgB-1x-XHZ" id="K8e-Ee-OrF"/>
                 <outlet property="eventBadgeStackView" destination="Tiv-bB-lxc" id="Y03-Me-g2f"/>
                 <outlet property="nameLabel" destination="HGu-dL-NBm" id="O15-OU-cf0"/>
-                <outlet property="normalPriceLabel" destination="2tj-so-mXj" id="dSk-eM-6Tb"/>
                 <outlet property="orderButton" destination="Yfi-fx-4iu" id="M7X-sT-xL5"/>
                 <outlet property="pointPriceLabel" destination="5PD-sG-JR0" id="J5k-cK-8tf"/>
+                <outlet property="priceStackView" destination="9KC-5s-bRb" id="RN4-Bj-iU1"/>
                 <outlet property="quantityLabel" destination="EHm-qx-g1F" id="mux-Ul-Kpz"/>
-                <outlet property="salePriceLabel" destination="eG3-cd-rzw" id="GEU-6U-diQ"/>
                 <outlet property="totalPriceLabel" destination="1nm-rW-Uw7" id="Rm4-03-ztS"/>
             </connections>
-            <point key="canvasLocation" x="-123.91304347826087" y="10.714285714285714"/>
+            <point key="canvasLocation" x="72" y="12"/>
         </collectionViewCell>
     </objects>
     <resources>

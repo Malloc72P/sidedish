@@ -17,6 +17,8 @@ class DetailInfoCell: UICollectionViewCell {
     private var orderViewModel: OrderViewModelType!
     private var item: Detail!
     
+    @IBOutlet weak var priceStackView: PriceStackView!
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var salePriceLabel: UILabel!
@@ -50,13 +52,23 @@ class DetailInfoCell: UICollectionViewCell {
     func configureCell(item: Detail) {
         nameLabel.text = item.getName()
         descriptionLabel.text = item.getDescription()
-        salePriceLabel.text = "\(item.getSalePrice())원"
-        normalPriceLabel.text = "\(item.getNormalPrice())원"
+//        salePriceLabel.text = "\(item.getSalePrice())원"
+//        normalPriceLabel.text = "\(item.getNormalPrice())원"
         pointPriceLabel.text = "\(item.getPointRate())"
         self.orderViewModel = OrderViewModel(order: (1, item.getSalePrice()))
         self.item = item
         self.fetchOrderData()
         self.updateOrder()
+        
+        for view in eventBadgeStackView.subviews {
+            view.removeFromSuperview()
+        }
+        item.getEventBadgeList().forEach { eventBadge in
+            let badgeLabel = BadgeLabel()
+            badgeLabel.configureLabel(text: eventBadge.getName(), color: eventBadge.getColorHex())
+            
+            eventBadgeStackView.addArrangedSubview(badgeLabel)
+        }
     }
     
     private func configureUI() {
