@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -46,7 +46,7 @@
                                     <constraint firstAttribute="height" constant="35" id="s7f-6K-JWv"/>
                                 </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tiv-bB-lxc">
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Tiv-bB-lxc">
                                 <rect key="frame" x="0.0" y="129" width="343" height="50"/>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3bh-SF-z12">
@@ -66,7 +66,6 @@
                             <constraint firstItem="3bh-SF-z12" firstAttribute="leading" secondItem="jgB-1x-XHZ" secondAttribute="leading" id="Q17-Mk-oot"/>
                             <constraint firstItem="3bh-SF-z12" firstAttribute="trailing" secondItem="jgB-1x-XHZ" secondAttribute="trailing" id="ZW0-lq-GP0"/>
                             <constraint firstAttribute="trailing" secondItem="HGu-dL-NBm" secondAttribute="trailing" id="ZcW-Ir-m38"/>
-                            <constraint firstItem="Tiv-bB-lxc" firstAttribute="trailing" secondItem="jgB-1x-XHZ" secondAttribute="trailing" id="e0J-Dq-lIU"/>
                             <constraint firstItem="jgB-1x-XHZ" firstAttribute="trailing" secondItem="HGu-dL-NBm" secondAttribute="trailing" id="fjI-b8-uop"/>
                             <constraint firstItem="jgB-1x-XHZ" firstAttribute="leading" secondItem="HGu-dL-NBm" secondAttribute="leading" id="tuc-RQ-bzq"/>
                         </constraints>
@@ -288,7 +287,7 @@
                 <outlet property="quantityLabel" destination="EHm-qx-g1F" id="mux-Ul-Kpz"/>
                 <outlet property="totalPriceLabel" destination="1nm-rW-Uw7" id="Rm4-03-ztS"/>
             </connections>
-            <point key="canvasLocation" x="72" y="12"/>
+            <point key="canvasLocation" x="71.739130434782609" y="11.71875"/>
         </collectionViewCell>
     </objects>
     <resources>

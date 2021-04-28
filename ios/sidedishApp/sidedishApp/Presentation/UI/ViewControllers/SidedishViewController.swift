@@ -134,22 +134,22 @@ extension SidedishViewController: UICollectionViewDelegate {
                 }
                 switch sectionKind {
                 case .main:
-                    pushDetailViewController(category: "main", id: sidedishViewModel.getMainItems()[indexPath.item].getId())
+                    pushDetailViewController(category: "main", id: sidedishViewModel.getMainItems()[indexPath.item].getId(), name: sidedishViewModel.getMainItems()[indexPath.item].getName())
                 case .soup:
-                    pushDetailViewController(category: "soup", id: sidedishViewModel.getMainItems()[indexPath.item].getId())
+                    pushDetailViewController(category: "soup", id: sidedishViewModel.getMainItems()[indexPath.item].getId(), name: sidedishViewModel.getMainItems()[indexPath.item].getName())
                 case .side:
-                    pushDetailViewController(category: "side", id: sidedishViewModel.getMainItems()[indexPath.item].getId())
-                default: break
+                    pushDetailViewController(category: "side", id: sidedishViewModel.getMainItems()[indexPath.item].getId(), name: sidedishViewModel.getMainItems()[indexPath.item].getName())
                 }
     }
     
-    func pushDetailViewController(category: String, id: Int) {
+    func pushDetailViewController(category: String, id: Int, name: String) {
         let storyboard = UIStoryboard(name: "Main", bundle: .main)
                 let detailViewController = storyboard.instantiateViewController(identifier: "DetailViewController")
         if let detailViewController = detailViewController as? DetailViewController {
             
             detailViewController.category = category
             detailViewController.id = id
+            detailViewController.name = name
             
             self.navigationController?.pushViewController(detailViewController, animated: true)
            

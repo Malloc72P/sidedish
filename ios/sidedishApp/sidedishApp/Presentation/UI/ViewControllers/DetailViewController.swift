@@ -24,6 +24,7 @@ class DetailViewController: UIViewController {
     
     var category: String!
     var id: Int!
+    var name: String!
     
     private var cancellables: Set<AnyCancellable> = []
     private var detailViewModel: DetailViewModelType!
@@ -32,6 +33,7 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = self.name
         detailViewModel = DetailViewModel()
         configureCollectionView()
         fetchData()
