@@ -40,7 +40,7 @@ struct Detail: Codable, Hashable, Equatable {
     }
     
     func getDescriptionImages() -> [Image] {
-        return item.getDetailImages()
+        return item.getDescriptionImages()
     }
     
     func getName() -> String {

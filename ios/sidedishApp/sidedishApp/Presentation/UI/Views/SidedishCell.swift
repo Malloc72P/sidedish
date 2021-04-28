@@ -12,8 +12,8 @@ class SidedishCell: UICollectionViewCell {
     
     let nameLabel = UILabel()
     let descriptionLabel = UILabel()
-    let normalPriceLabel = UILabel()
-    let salePriceLabel = UILabel()
+
+    let priceStack = PriceStackView()
     let badgeLabel = BadgeLabel()
     let eventBadgeStackView = UIStackView()
     let thumbnailImageView = RemoteImageView()
@@ -31,13 +31,25 @@ class SidedishCell: UICollectionViewCell {
     func configureCell(item: Item) {
         self.nameLabel.text = item.getName()
         self.descriptionLabel.text = item.getDescription()
-        self.normalPriceLabel.text = "\(item.getNormalPrice())"
-        self.salePriceLabel.text = "\(item.getSalePrice())"
-        self.salePriceLabel.isHidden = item.isNotSale()
+        
+//        self.normalPriceLabel.text = "\(item.getNormalPrice())"
+//        self.salePriceLabel.text = "\(item.getSalePrice())"
+//        self.salePriceLabel.isHidden = item.isSale()
+        
         guard let url = URL(string: item.getThumbnailImage()) else { return }
         self.thumbnailImageView.setImage(with: url)
-        self.badgeLabel.backgroundColor = .systemGreen
-        self.badgeLabel.text = "이벤트특가"
+        
+        priceStack.configureStackView(normalPrice: item.getNormalPrice(), salePrice: item.getSalePrice())
+        
+        for view in eventBadgeStackView.subviews {
+            view.removeFromSuperview()
+        }
+        item.getEventBadgeList().forEach { eventBadge in
+            let badgeLabel = BadgeLabel()
+            badgeLabel.configureLabel(text: eventBadge.getName(), color: eventBadge.getColorHex())
+            
+            eventBadgeStackView.addArrangedSubview(badgeLabel)
+        }
     }
     
     private func configureUI() {
@@ -47,25 +59,15 @@ class SidedishCell: UICollectionViewCell {
         descriptionLabel.font = UIFont.systemFont(ofSize: 15)
         descriptionLabel.textColor = .gray
         
-        salePriceLabel.font = UIFont.boldSystemFont(ofSize: 15)
-        normalPriceLabel.font = UIFont.systemFont(ofSize: 14)
-        normalPriceLabel.textColor = .systemGray2
-        
-        badgeLabel.padding = UIEdgeInsets(top: 5, left: 8, bottom: 5, right: 8)
-        badgeLabel.sizeToFit()
-        badgeLabel.layer.cornerRadius = 8
-        badgeLabel.layer.masksToBounds = true
-        badgeLabel.textColor = .systemBackground
-        badgeLabel.font = UIFont.boldSystemFont(ofSize: 16)
+      
         
         eventBadgeStackView.spacing = 8
         eventBadgeStackView.axis = .horizontal
         
-        eventBadgeStackView.addArrangedSubview(badgeLabel)
+//        let priceStack = PriceStackView()
+//        priceStack.configureStackView()
+//        let priceStack = UIStackView(arrangedSubviews: [salePriceLabel, normalPriceLabel])
         
-        let priceStack = UIStackView(arrangedSubviews: [salePriceLabel, normalPriceLabel])
-        priceStack.axis = .horizontal
-        priceStack.spacing = 8
         
         let textStack = UIStackView(arrangedSubviews: [nameLabel, descriptionLabel, priceStack, eventBadgeStackView])
         textStack.axis = .vertical

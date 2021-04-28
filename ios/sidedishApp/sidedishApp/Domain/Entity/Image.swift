@@ -7,8 +7,9 @@
 
 import Foundation
 
-struct Image: Codable, Hashable, Equatable {
+struct Image: Hashable, Equatable {
     private var image: String
+    private let id = UUID()
     
     init(image: String  = "") {
         self.image = image
@@ -16,5 +17,13 @@ struct Image: Codable, Hashable, Equatable {
     
     func getImage() -> String {
         return image
+    }
+    
+    static func ==(lhs: Image, rhs: Image) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+      hasher.combine(id)
     }
 }

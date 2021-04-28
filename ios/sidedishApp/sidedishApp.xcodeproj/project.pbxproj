@@ -15,6 +15,8 @@
 		764CE0C22630110500DED09C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764CE0C12630110500DED09C /* DetailViewController.swift */; };
 		764CE0C72630167E00DED09C /* DetailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764CE0C62630167E00DED09C /* DetailItem.swift */; };
 		764CE0CC26301E7000DED09C /* DetailViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764CE0CB26301E7000DED09C /* DetailViewModelType.swift */; };
+		76785DAB26394A6E0089B8ED /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76785DAA26394A6E0089B8ED /* Extension.swift */; };
+		76785DAD26394ABA0089B8ED /* PriceStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76785DAC26394ABA0089B8ED /* PriceStackView.swift */; };
 		767DF7A42637B3EB00642F1C /* DetailLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767DF7A32637B3EB00642F1C /* DetailLayoutManager.swift */; };
 		767DF7AA2637B46400642F1C /* DetailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767DF7A82637B46400642F1C /* DetailImageCell.swift */; };
 		767DF7B42637B4C100642F1C /* DetailInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767DF7B22637B4C100642F1C /* DetailInfoCell.swift */; };
@@ -75,6 +77,8 @@
 		764CE0C12630110500DED09C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		764CE0C62630167E00DED09C /* DetailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailItem.swift; sourceTree = "<group>"; };
 		764CE0CB26301E7000DED09C /* DetailViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelType.swift; sourceTree = "<group>"; };
+		76785DAA26394A6E0089B8ED /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		76785DAC26394ABA0089B8ED /* PriceStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceStackView.swift; sourceTree = "<group>"; };
 		767DF7A32637B3EB00642F1C /* DetailLayoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLayoutManager.swift; sourceTree = "<group>"; };
 		767DF7A82637B46400642F1C /* DetailImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImageCell.swift; sourceTree = "<group>"; };
 		767DF7B22637B4C100642F1C /* DetailInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoCell.swift; sourceTree = "<group>"; };
@@ -172,6 +176,7 @@
 				9386C108262D7401008645D9 /* Assets.xcassets */,
 				9386C10A262D7401008645D9 /* LaunchScreen.storyboard */,
 				9386C10D262D7401008645D9 /* Info.plist */,
+				76785DAA26394A6E0089B8ED /* Extension.swift */,
 			);
 			path = sidedishApp;
 			sourceTree = "<group>";
@@ -255,6 +260,7 @@
 				767DF7A32637B3EB00642F1C /* DetailLayoutManager.swift */,
 				767DF7B22637B4C100642F1C /* DetailInfoCell.swift */,
 				767DF7B32637B4C100642F1C /* DetailInfoCell.xib */,
+				76785DAC26394ABA0089B8ED /* PriceStackView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -462,9 +468,11 @@
 				764CE0B3263008C500DED09C /* DetailUseCase.swift in Sources */,
 				9386C156262D86C3008645D9 /* LayoutManager.swift in Sources */,
 				9386C16E262D8C02008645D9 /* Category.swift in Sources */,
+				76785DAD26394ABA0089B8ED /* PriceStackView.swift in Sources */,
 				9386C189262E4DB2008645D9 /* SectionHeader.swift in Sources */,
 				767DF7BA2637E1F800642F1C /* Image.swift in Sources */,
 				9386C174262DB13C008645D9 /* SidedishCell.swift in Sources */,
+				76785DAB26394A6E0089B8ED /* Extension.swift in Sources */,
 				9386C18E262E51F1008645D9 /* Endpoint.swift in Sources */,
 				93732723263800EC00FBF7C3 /* OrderViewModel.swift in Sources */,
 				9386C102262D7400008645D9 /* SceneDelegate.swift in Sources */,
