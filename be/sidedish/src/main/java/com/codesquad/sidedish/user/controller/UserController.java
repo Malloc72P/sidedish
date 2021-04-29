@@ -1,22 +1,21 @@
 package com.codesquad.sidedish.user.controller;
 
 import com.codesquad.sidedish.user.dto.AuthorizationInfo;
-import com.codesquad.sidedish.user.dto.JwtTokenResponse;
 import com.codesquad.sidedish.user.dto.ReceiveAccessTokenDTO;
 import com.codesquad.sidedish.user.dto.UserInfoDTO;
 import com.codesquad.sidedish.user.service.GoogleApiRequester;
 import com.codesquad.sidedish.user.service.UserService;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import static com.codesquad.sidedish.util.UrlConstant.LOGIN_PAGE_URL;
 
-@RestController
+@Controller
 @RequestMapping("/users")
 public class UserController {
 
@@ -34,10 +33,11 @@ public class UserController {
     }
 
     @GetMapping("/callback")
-    public JwtTokenResponse oauthCallBack(AuthorizationInfo authorizationInfo) throws JsonProcessingException {
+    public String oauthCallBack(AuthorizationInfo authorizationInfo, Model model) {
         ReceiveAccessTokenDTO receiveAccessTokenDTO = googleApiRequester.requestAccessToken(authorizationInfo.getCode());
         UserInfoDTO userInfoDTO = googleApiRequester.requestUserInfo(receiveAccessTokenDTO.getAccess_token());
         String jwtToken = userService.login(userInfoDTO);
-        return new JwtTokenResponse(jwtToken);
+        model.addAttribute("token", jwtToken);
+        return "token";
     }
 }
