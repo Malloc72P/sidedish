@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function sendTokenToNative() {
+            alert("token : {{token}}");
+            webkit.messageHandlers.scriptHandler.postMessage({{token}});
+        }
+
+    </script>
+</head>
+<body>
+<button onclick="sendTokenToNative()">사이드디쉬 앱에서 계속하기</button>
+</body>
+</html>
