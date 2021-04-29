@@ -17,6 +17,8 @@ import java.util.stream.Collectors;
 
 public class SidedishItem {
 
+    private static final int NO_EVENT = 0;
+    private static final int NOT_ON_SALE = -1;
     private static final int ZERO_PRICE = 0;
 
     @Id
@@ -48,8 +50,8 @@ public class SidedishItem {
     public int calculateSalePrice(Set<SidedishEvent> sidedishEvents) {
         int salePrice = itemNormalPrice;
 
-        if (sidedishEvents.size() == SidedishEvent.NO_EVENT) {
-            return SidedishEvent.NOT_ON_SALE;
+        if (sidedishEvents.size() == NO_EVENT) {
+            return NOT_ON_SALE;
         }
 
         for (SidedishEvent currentEvent : sidedishEvents) {

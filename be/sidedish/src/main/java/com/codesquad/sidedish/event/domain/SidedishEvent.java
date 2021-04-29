@@ -7,8 +7,7 @@ import java.util.Set;
 
 public class SidedishEvent {
 
-    public static final int NOT_ON_SALE = -1;
-    public static final int NO_EVENT = 0;
+    private static final int PERCENT_100 = 100;
 
     @Id
     private Long id;
@@ -26,7 +25,7 @@ public class SidedishEvent {
     }
 
     public int discount(int normalPrice) {
-        return (int) (normalPrice * (eventSaleRate / 100));
+        return (int) (normalPrice * (eventSaleRate / PERCENT_100));
     }
 
     public Long getId() {
