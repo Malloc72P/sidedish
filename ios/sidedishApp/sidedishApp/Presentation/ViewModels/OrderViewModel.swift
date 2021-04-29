@@ -32,9 +32,11 @@ class OrderViewModel: OrderViewModelType {
     }
     
     func minus(price: Int) {
-        self.order.quantity -= 1
-        self.order.amount -= price
-        self.dataChanged.send()
+        if self.order.quantity > 1 {
+            self.order.quantity -= 1
+            self.order.amount -= price
+            self.dataChanged.send()
+        }
     }
     
     func order(quantity:Int, path category: String, path id: Int) {

@@ -83,5 +83,9 @@ struct DetailItem: Codable, Hashable, Equatable {
     func isPurchasable() -> Bool {
         return self.purchasable
     }
+    
+    func sellPrice() -> Int {
+        return self.salePrice == -1 ? self.normalPrice : self.salePrice
+    }
 }
 

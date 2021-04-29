@@ -74,5 +74,9 @@ struct Detail: Codable, Hashable, Equatable {
     func isPurchasable() -> Bool {
         return item.isPurchasable()
     }
+    
+    func sellPrice() -> Int {
+        return item.sellPrice()
+    }
 }
 

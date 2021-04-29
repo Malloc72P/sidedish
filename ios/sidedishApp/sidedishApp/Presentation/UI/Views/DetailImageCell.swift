@@ -27,11 +27,9 @@ class DetailImageCell: UICollectionViewCell {
     }
     
     private func configureUI() {
-        contentView.heightAnchor.constraint(equalToConstant: 375).isActive = true
-    
         contentView.addSubview(imageView)
+        imageView.contentMode = .scaleToFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFit
         imageView.layer.masksToBounds = true
         imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         imageView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true

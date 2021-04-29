@@ -37,11 +37,11 @@ class DetailInfoCell: UICollectionViewCell {
     @IBOutlet weak var eventBadgeStackView: UIStackView!
     
     @IBAction func addQuantityButtonTouched(_ sender: Any) {
-        self.orderViewModel.plus(price: self.item.getSalePrice())
+        self.orderViewModel.plus(price: self.item.sellPrice())
     }
     
     @IBAction func subtractQuantituButtonTouched(_ sender: Any) {
-        self.orderViewModel.minus(price: self.item.getSalePrice())
+        self.orderViewModel.minus(price: self.item.sellPrice())
     }
     
     override func awakeFromNib() {
@@ -59,8 +59,9 @@ class DetailInfoCell: UICollectionViewCell {
             orderButton.setTitle("일시품절", for: .disabled)
         }
 
-        pointPriceLabel.text = "\(item.getPointRate())"
-        self.orderViewModel = OrderViewModel(order: (1, item.getSalePrice()))
+        pointPriceLabel.text = "\(item.getPointRate() * item.sellPrice()/100)원"
+        self.orderViewModel = OrderViewModel(order: (1, item.sellPrice()))
+        
         self.item = item
         self.fetchOrderData()
         self.updateOrder()
@@ -93,6 +94,6 @@ class DetailInfoCell: UICollectionViewCell {
     
     private func updateOrder() {
         self.quantityLabel.text = "\(orderViewModel.getOder().quantity)"
-        self.totalPriceLabel.text = "\(orderViewModel.getOder().amount)"
+        self.totalPriceLabel.text = "\(orderViewModel.getOder().amount)원"
     }
 }
