@@ -16,6 +16,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class SidedishItem {
+
+    private static final int ZERO_PRICE = 0;
+
     @Id
     private Long id;
 
@@ -45,15 +48,15 @@ public class SidedishItem {
     public int calculateSalePrice(Set<SidedishEvent> sidedishEvents) {
         int salePrice = itemNormalPrice;
 
-        if (sidedishEvents.size() == 0) {
+        if (sidedishEvents.size() == SidedishEvent.NO_EVENT) {
             return SidedishEvent.NOT_ON_SALE;
         }
 
         for (SidedishEvent currentEvent : sidedishEvents) {
             salePrice -= currentEvent.discount(itemNormalPrice);
         }
-        if (salePrice < 0) {
-            salePrice = 0;
+        if (salePrice < ZERO_PRICE) {
+            salePrice = ZERO_PRICE;
         }
         return salePrice;
     }

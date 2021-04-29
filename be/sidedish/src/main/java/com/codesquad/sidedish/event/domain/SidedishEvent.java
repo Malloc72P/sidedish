@@ -8,6 +8,7 @@ import java.util.Set;
 public class SidedishEvent {
 
     public static final int NOT_ON_SALE = -1;
+    public static final int NO_EVENT = 0;
 
     @Id
     private Long id;
