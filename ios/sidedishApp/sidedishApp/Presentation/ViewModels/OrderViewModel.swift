@@ -11,9 +11,10 @@ import Combine
 class OrderViewModel: OrderViewModelType {
     private var item = Detail()
     private var order: (quantity: Int, amount: Int)!
-    private var response = String()
+    private var statusCode = Int()
     private var orderUseCase: OrderUseCasePort!
     private(set) var dataChanged = PassthroughSubject<Void, Never>()
+    private(set) var responseChanged = PassthroughSubject<Void, Never>()
     private var cancellables = Set<AnyCancellable>()
     
     init(order: (Int, Int), orderUseCase: OrderUseCasePort = OrderUseCase()) {
@@ -23,6 +24,10 @@ class OrderViewModel: OrderViewModelType {
     
     func getOder() -> (quantity: Int, amount: Int) {
         return self.order
+    }
+    
+    func getStatusCode() -> Int {
+        return self.statusCode
     }
     
     func plus(price: Int) {
@@ -46,9 +51,10 @@ class OrderViewModel: OrderViewModelType {
                 switch result {
                 case .finished: break
                 case .failure(_): break }
-            } receiveValue: { response in
-                // response 처리해줘야 함
-                print(response)
+            } receiveValue: { statusCode in
+                self.statusCode = statusCode
+                print("code",self.statusCode)
+                self.responseChanged.send()
             }
             .store(in: &cancellables)
     }

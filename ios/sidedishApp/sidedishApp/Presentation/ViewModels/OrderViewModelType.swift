@@ -10,7 +10,9 @@ import Combine
 
 protocol OrderViewModelType {
     var dataChanged: PassthroughSubject<Void, Never> { get }
+    var responseChanged: PassthroughSubject<Void, Never> { get }
     func getOder() -> (quantity: Int, amount: Int)
+    func getStatusCode() -> Int
     func plus(price: Int)
     func minus(price: Int)
     func order(quantity:Int, path category: String, path id: Int)

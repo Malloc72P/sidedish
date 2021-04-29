@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import Toaster
 
 class DetailInfoCell: UICollectionViewCell {
     class var reuseIdentifier: String {
@@ -64,6 +65,7 @@ class DetailInfoCell: UICollectionViewCell {
         
         self.item = item
         self.fetchOrderData()
+        self.responseOrder()
         self.updateOrder()
         
         priceStackView.configureDetail(normalPrice: item.getNormalPrice(), salePrice: item.getSalePrice())
@@ -95,5 +97,22 @@ class DetailInfoCell: UICollectionViewCell {
     private func updateOrder() {
         self.quantityLabel.text = "\(orderViewModel.getOder().quantity)"
         self.totalPriceLabel.text = "\(orderViewModel.getOder().amount)원"
+    }
+    
+    private func responseOrder() {
+        self.orderViewModel.responseChanged
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.updateResponseOrder()
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func updateResponseOrder() {
+        if self.orderViewModel.getStatusCode() == 201 {
+            Toast(text: "주문 가능합니다!").show()
+        } else {
+            Toast(text: "수량이 부족하여 주문 불가능합니다.").show()
+        }
     }
 }

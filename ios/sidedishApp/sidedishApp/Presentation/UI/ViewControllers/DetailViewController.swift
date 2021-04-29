@@ -49,7 +49,6 @@ class DetailViewController: UIViewController {
         
         let detailImageCellRegistration = UICollectionView.CellRegistration<DetailImageCell, DataItem>.init(handler: { (cell, indexPath, image) in
            
-            dump(image)
             if case .detailImages(let image) = image {
                 cell.configureCell(image: image.getImage())
             }
