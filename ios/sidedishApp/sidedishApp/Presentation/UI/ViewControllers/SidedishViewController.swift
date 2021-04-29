@@ -152,10 +152,7 @@ extension SidedishViewController: UICollectionViewDelegate {
             detailViewController.name = name
             
             self.navigationController?.pushViewController(detailViewController, animated: true)
-           
         }
     }
-    
-
 }
 

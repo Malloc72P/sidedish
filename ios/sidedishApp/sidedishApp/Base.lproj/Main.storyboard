@@ -18,7 +18,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Ta0-er-juV"/>
+                    <navigationItem key="navigationItem" id="Ta0-er-juV">
+                        <barButtonItem key="backBarButtonItem" title="뒤로" id="01d-Tk-4wp"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
