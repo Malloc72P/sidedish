@@ -13,6 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 
 public class AuthInterceptor implements HandlerInterceptor {
 
+    private static final int BEARER_TOKEN_LENGTH = 2;
+    private static final int TOKEN = 1;
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         Auth authAnnotation = ((HandlerMethod) handler).getMethodAnnotation(Auth.class);
@@ -39,10 +42,10 @@ public class AuthInterceptor implements HandlerInterceptor {
             throw new NoJwtTokenException(NoJwtTokenException.NO_TOKEN_IN_REQUEST_HEADER);
         }
         String[] splitedString = authorizationValue.split(" ");
-        if (splitedString.length != 2) {
+        if (splitedString.length != BEARER_TOKEN_LENGTH) {
             throw new InvalidJwtTokenException(InvalidJwtTokenException.BAD_TOKEN);
         }
-        String jwtToken = splitedString[1];
+        String jwtToken = splitedString[TOKEN];
 
         JwtUtil.validateToken(jwtToken);
     }
