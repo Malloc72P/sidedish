@@ -1,12 +1,12 @@
 package com.codesquad.sidedish.user.dto;
 
-public class ResponseJwtTokenDTO {
+public class JwtTokenResponse {
     private String token;
 
-    protected ResponseJwtTokenDTO() {
+    public JwtTokenResponse() {
     }
 
-    public ResponseJwtTokenDTO(String token) {
+    public JwtTokenResponse(String token) {
         this.token = token;
     }
 

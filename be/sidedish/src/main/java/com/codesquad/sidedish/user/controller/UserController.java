@@ -1,8 +1,8 @@
 package com.codesquad.sidedish.user.controller;
 
 import com.codesquad.sidedish.user.dto.AuthorizationInfo;
+import com.codesquad.sidedish.user.dto.JwtTokenResponse;
 import com.codesquad.sidedish.user.dto.ReceiveAccessTokenDTO;
-import com.codesquad.sidedish.user.dto.ResponseJwtTokenDTO;
 import com.codesquad.sidedish.user.dto.UserInfoDTO;
 import com.codesquad.sidedish.user.service.GoogleApiRequester;
 import com.codesquad.sidedish.user.service.UserService;
@@ -34,10 +34,10 @@ public class UserController {
     }
 
     @GetMapping("/callback")
-    public ResponseJwtTokenDTO oauthCallBack(AuthorizationInfo authorizationInfo) throws JsonProcessingException {
+    public JwtTokenResponse oauthCallBack(AuthorizationInfo authorizationInfo) throws JsonProcessingException {
         ReceiveAccessTokenDTO receiveAccessTokenDTO = googleApiRequester.requestAccessToken(authorizationInfo.getCode());
         UserInfoDTO userInfoDTO = googleApiRequester.requestUserInfo(receiveAccessTokenDTO.getAccess_token());
         String jwtToken = userService.login(userInfoDTO);
-        return new ResponseJwtTokenDTO(jwtToken);
+        return new JwtTokenResponse(jwtToken);
     }
 }
