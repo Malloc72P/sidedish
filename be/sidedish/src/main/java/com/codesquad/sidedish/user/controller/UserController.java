@@ -4,7 +4,6 @@ import com.codesquad.sidedish.user.dto.ReceiveAccessTokenDTO;
 import com.codesquad.sidedish.user.dto.UserInfoDTO;
 import com.codesquad.sidedish.user.service.GoogleApiRequester;
 import com.codesquad.sidedish.user.service.UserService;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,7 +35,7 @@ public class UserController {
     @GetMapping("/callback")
     public String oauthCallBack(@RequestParam("code") String code, @RequestParam("scope") String scope,
                                 @RequestParam("authuser") String authuser, @RequestParam("prompt") String prompt,
-                                Model model) throws JsonProcessingException {
+                                Model model) {
         ReceiveAccessTokenDTO receiveAccessTokenDTO = googleApiRequester.requestAccessToken(code);
         UserInfoDTO userInfoDTO = googleApiRequester.requestUserInfo(receiveAccessTokenDTO.getAccess_token());
         String jwtToken = userService.login(userInfoDTO);
