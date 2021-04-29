@@ -44,7 +44,6 @@ class DetailViewModel: DetailViewModelType {
                     case .failure(_): break } },
                   receiveValue: { item in
                     self.item = item
-                    
                     self.dataChanged.send()
                   })
             .store(in: &cancellables)
