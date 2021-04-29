@@ -4,14 +4,20 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script>
-        function sendTokenToNative() {
-            alert("token : {{token}}");
-            webkit.messageHandlers.scriptHandler.postMessage({{token}});
+        function scriptHandler(message) {
+            //alert("token : {{token}}");
+            let token = "{{token}}";
+            console.log("", token);
+            try{
+                webkit.messageHandlers.scriptHandler.postMessage(token);
+            }catch (error) {
+                alert(error)
+            }
         }
 
     </script>
 </head>
 <body>
-<button onclick="sendTokenToNative()">사이드디쉬 앱에서 계속하기</button>
+<button onclick="scriptHandler('scriptHandler')">사이드디쉬 앱에서 계속하기</button>
 </body>
 </html>
