@@ -23,20 +23,22 @@ public class UserService {
 
     public String login(UserInfoDTO userInfoDTO) {
         Optional<User> optionalUser = findUserByUserId(userInfoDTO.getId());
-        User user;
-        if (optionalUser.isPresent()) {
-            user = optionalUser.get();
-            user.update(userInfoDTO);
-            userRepository.save(user);
-        } else {
-            user = createuser(userInfoDTO);
-        }
+        User user = userLoginCheck(userInfoDTO, optionalUser);
         String jwtToken = JwtUtil.createToken(user);
         logger.info("jwtToken : {}", jwtToken);
         return jwtToken;
     }
 
-    public User createuser(UserInfoDTO userInfoDTO) {
+    private User userLoginCheck(UserInfoDTO userInfoDTO, Optional<User> optionalUser) {
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            user.update(userInfoDTO);
+            return userRepository.save(user);
+        }
+        return createUser(userInfoDTO);
+    }
+
+    public User createUser(UserInfoDTO userInfoDTO) {
         return userRepository.save(new User(userInfoDTO));
     }
 
