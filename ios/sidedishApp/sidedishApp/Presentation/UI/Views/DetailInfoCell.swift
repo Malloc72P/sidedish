@@ -29,7 +29,7 @@ class DetailInfoCell: UICollectionViewCell {
     @IBOutlet weak var eventBadgeStackView: UIStackView!
     
     @IBAction func orderButtonTouched(_ sender: Any) {
-        self.orderViewModel.order(quantity: orderViewModel.getOder().quantity, path: "main", path: 1)
+        self.orderViewModel.order(quantity: orderViewModel.getOder().quantity, path: "main", path: 3)
     }
     
     @IBAction func addQuantityButtonTouched(_ sender: Any) {
@@ -105,7 +105,7 @@ class DetailInfoCell: UICollectionViewCell {
     private func updateResponseOrder() {
         if self.orderViewModel.getStatusCode() == 201 {
             self.showViewController(at: 0)
-        } else {
+        } else if self.orderViewModel.getStatusCode() == 400 {
             self.showViewController(at: 1)
         }
     }
@@ -114,7 +114,6 @@ class DetailInfoCell: UICollectionViewCell {
         if let tabVC = UIStoryboard(name: "Main", bundle: .none).instantiateViewController(identifier: MainTabBarController.identifier) as? MainTabBarController {
             tabVC.modalPresentationStyle = .fullScreen
             tabVC.selectedIndex = index
-            
             let rootViewController = UIApplication.shared.keyWindow?.rootViewController
             rootViewController?.present(tabVC, animated: false, completion: .none)
         }
