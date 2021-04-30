@@ -50,10 +50,12 @@ class OrderViewModel: OrderViewModelType {
             .sink { result in
                 switch result {
                 case .finished: break
-                case .failure(_): break }
+                case .failure(_):
+                    self.statusCode = 400
+                    self.responseChanged.send()
+                }
             } receiveValue: { statusCode in
                 self.statusCode = statusCode
-                print("code",self.statusCode)
                 self.responseChanged.send()
             }
             .store(in: &cancellables)

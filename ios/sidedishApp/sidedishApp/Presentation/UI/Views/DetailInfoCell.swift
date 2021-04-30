@@ -10,16 +10,12 @@ import Combine
 import Toaster
 
 class DetailInfoCell: UICollectionViewCell {
-    class var reuseIdentifier: String {
-        return "\(self)"
-    }
-    
+    class var reuseIdentifier: String { return "\(self)" }
     private var cancellables: Set<AnyCancellable> = []
     private var orderViewModel: OrderViewModelType!
     private var item: Detail!
     
     @IBOutlet weak var priceStackView: PriceStackView!
-    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var salePriceLabel: UILabel!
@@ -30,12 +26,11 @@ class DetailInfoCell: UICollectionViewCell {
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var orderButton: UIButton!
-
-    @IBAction func orderButtonTouched(_ sender: Any) {
-        self.orderViewModel.order(quantity: orderViewModel.getOder().quantity, path: "side", path: 7)
-    }
-
     @IBOutlet weak var eventBadgeStackView: UIStackView!
+    
+    @IBAction func orderButtonTouched(_ sender: Any) {
+        self.orderViewModel.order(quantity: orderViewModel.getOder().quantity, path: "main", path: 1)
+    }
     
     @IBAction func addQuantityButtonTouched(_ sender: Any) {
         self.orderViewModel.plus(price: self.item.sellPrice())
@@ -62,7 +57,6 @@ class DetailInfoCell: UICollectionViewCell {
 
         pointPriceLabel.text = "\(item.getPointRate() * item.sellPrice()/100)원"
         self.orderViewModel = OrderViewModel(order: (1, item.sellPrice()))
-        
         self.item = item
         self.fetchOrderData()
         self.responseOrder()
@@ -110,9 +104,19 @@ class DetailInfoCell: UICollectionViewCell {
     
     private func updateResponseOrder() {
         if self.orderViewModel.getStatusCode() == 201 {
-            Toast(text: "주문 가능합니다!").show()
+            self.showViewController(at: 0)
         } else {
-            Toast(text: "수량이 부족하여 주문 불가능합니다.").show()
+            self.showViewController(at: 1)
+        }
+    }
+    
+    private func showViewController(at index: Int) {
+        if let tabVC = UIStoryboard(name: "Main", bundle: .none).instantiateViewController(identifier: MainTabBarController.identifier) as? MainTabBarController {
+            tabVC.modalPresentationStyle = .fullScreen
+            tabVC.selectedIndex = index
+            
+            let rootViewController = UIApplication.shared.keyWindow?.rootViewController
+            rootViewController?.present(tabVC, animated: false, completion: .none)
         }
     }
 }

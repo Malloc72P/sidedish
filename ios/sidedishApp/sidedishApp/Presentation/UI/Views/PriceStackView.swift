@@ -20,7 +20,7 @@ class PriceStackView: UIStackView {
             configureSale()
             normalPriceLabel.text = "\(normalPrice)원"
             normalPriceLabel.attributedText =  normalPriceLabel.text?.strikeThrough()
-            salePriceLabel.text = "\(salePrice)"
+            salePriceLabel.text = "\(salePrice)원"
             
             addArrangedSubview(salePriceLabel)
             addArrangedSubview(normalPriceLabel)
@@ -42,7 +42,7 @@ class PriceStackView: UIStackView {
             normalPriceLabel.textColor = .systemGray2
             normalPriceLabel.text = "\(normalPrice)원"
             normalPriceLabel.attributedText =  normalPriceLabel.text?.strikeThrough()
-            salePriceLabel.text = "\(salePrice)"
+            salePriceLabel.text = "\(salePrice)원"
             
             addArrangedSubview(salePriceLabel)
             addArrangedSubview(normalPriceLabel)
@@ -55,9 +55,7 @@ class PriceStackView: UIStackView {
     func configureNotSale() {
         normalPriceLabel.font = UIFont.boldSystemFont(ofSize: 15)
         normalPriceLabel.textColor = .black
-        
     }
-    
     
     func configureSale() {
         salePriceLabel.font = UIFont.boldSystemFont(ofSize: 15)

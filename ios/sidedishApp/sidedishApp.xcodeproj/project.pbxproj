@@ -31,6 +31,8 @@
 		9373273A2639448400FBF7C3 /* OrderViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937327392639448300FBF7C3 /* OrderViewModelType.swift */; };
 		93732757263A8C0500FBF7C3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93732756263A8C0500FBF7C3 /* LoginViewController.swift */; };
 		9373275C263A976000FBF7C3 /* LoginWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9373275B263A976000FBF7C3 /* LoginWebViewController.swift */; };
+		93732767263AB17300FBF7C3 /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93732766263AB17300FBF7C3 /* TokenManager.swift */; };
+		9373276C263AD12100FBF7C3 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9373276B263AD12100FBF7C3 /* MainTabBarController.swift */; };
 		9386C100262D7400008645D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C0FF262D7400008645D9 /* AppDelegate.swift */; };
 		9386C102262D7400008645D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C101262D7400008645D9 /* SceneDelegate.swift */; };
 		9386C104262D7400008645D9 /* SidedishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386C103262D7400008645D9 /* SidedishViewController.swift */; };
@@ -101,6 +103,8 @@
 		937327392639448300FBF7C3 /* OrderViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModelType.swift; sourceTree = "<group>"; };
 		93732756263A8C0500FBF7C3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9373275B263A976000FBF7C3 /* LoginWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWebViewController.swift; sourceTree = "<group>"; };
+		93732766263AB17300FBF7C3 /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
+		9373276B263AD12100FBF7C3 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		9386C0FC262D7400008645D9 /* sidedishApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sidedishApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9386C0FF262D7400008645D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9386C101262D7400008645D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -261,6 +265,7 @@
 				764CE0C62630167E00DED09C /* DetailItem.swift */,
 				767DF7B92637E1F800642F1C /* Image.swift */,
 				937327342638F3DC00FBF7C3 /* Response.swift */,
+				93732766263AB17300FBF7C3 /* TokenManager.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -286,6 +291,7 @@
 		9386C14E262D83F2008645D9 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				9373276B263AD12100FBF7C3 /* MainTabBarController.swift */,
 				9386C103262D7400008645D9 /* SidedishViewController.swift */,
 				764CE0C12630110500DED09C /* DetailViewController.swift */,
 				93732756263A8C0500FBF7C3 /* LoginViewController.swift */,
@@ -597,6 +603,7 @@
 			files = (
 				9386C1C5262F311C008645D9 /* BadgeLabel.swift in Sources */,
 				767DF7A42637B3EB00642F1C /* DetailLayoutManager.swift in Sources */,
+				9373276C263AD12100FBF7C3 /* MainTabBarController.swift in Sources */,
 				764CE0C72630167E00DED09C /* DetailItem.swift in Sources */,
 				764CE0AE2630079C00DED09C /* DetailNetworkManager.swift in Sources */,
 				764CE0C22630110500DED09C /* DetailViewController.swift in Sources */,
@@ -629,6 +636,7 @@
 				767DF7BA2637E1F800642F1C /* Image.swift in Sources */,
 				9386C174262DB13C008645D9 /* SidedishCell.swift in Sources */,
 				76785DAB26394A6E0089B8ED /* Extension.swift in Sources */,
+				93732767263AB17300FBF7C3 /* TokenManager.swift in Sources */,
 				9386C18E262E51F1008645D9 /* Endpoint.swift in Sources */,
 				93732723263800EC00FBF7C3 /* OrderViewModel.swift in Sources */,
 				9386C102262D7400008645D9 /* SceneDelegate.swift in Sources */,

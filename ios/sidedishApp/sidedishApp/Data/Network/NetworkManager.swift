@@ -42,6 +42,7 @@ class PostNetworkManager: HttpPostMethodProtocol {
         
         request.httpBody = postJsonData
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(TokenManager.load())", forHTTPHeaderField: "Authorization")
         
         return URLSession.shared.dataTaskPublisher(for: request)
             .tryMap{ data , response -> Int in

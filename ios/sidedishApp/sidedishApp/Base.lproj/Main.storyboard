@@ -60,7 +60,7 @@
             </objects>
             <point key="canvasLocation" x="1639.1304347826087" y="79.6875"/>
         </scene>
-        <!--로그인-->
+        <!--마이페이지-->
         <scene sceneID="hW2-Z6-itB">
             <objects>
                 <viewController storyboardIdentifier="LoginViewController" id="KfG-hJ-bN7" customClass="LoginViewController" customModule="sidedishApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -68,34 +68,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bM4-mS-bLh">
-                                <rect key="frame" x="20" y="419" width="374" height="58"/>
-                                <color key="backgroundColor" red="0.50980392159999999" green="0.82745098039999998" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="58" id="CJ7-gZ-LBG"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <state key="normal" title="로그인하기">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="loginButtonTapped:" destination="KfG-hJ-bN7" eventType="touchUpInside" id="g7e-zN-35d"/>
-                                    <segue destination="gE6-0D-XZw" kind="show" id="w62-ZX-H4O"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="UcS-a6-zIr">
+                                <rect key="frame" x="20" y="386" width="374" height="124"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bM4-mS-bLh">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="58"/>
+                                        <color key="backgroundColor" red="0.50980392159999999" green="0.82745098039999998" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="58" id="CJ7-gZ-LBG"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <state key="normal" title="로그인하기">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="gE6-0D-XZw" kind="show" id="w62-ZX-H4O"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HGc-XE-huG">
+                                        <rect key="frame" x="0.0" y="66" width="374" height="58"/>
+                                        <color key="backgroundColor" red="0.52549019607843139" green="0.77647058823529413" blue="1" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="58" id="97K-wv-cah"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <state key="normal" title="로그아웃하기">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="logoutButtonTapped:" destination="KfG-hJ-bN7" eventType="touchUpInside" id="eNj-Lf-fQq"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="W8q-Y0-In5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="bM4-mS-bLh" firstAttribute="centerX" secondItem="FjX-8d-pje" secondAttribute="centerX" id="Sjr-XT-MGd"/>
-                            <constraint firstItem="bM4-mS-bLh" firstAttribute="leading" secondItem="W8q-Y0-In5" secondAttribute="leading" constant="20" id="WE6-cr-acO"/>
-                            <constraint firstItem="bM4-mS-bLh" firstAttribute="centerY" secondItem="FjX-8d-pje" secondAttribute="centerY" id="ZDM-rw-S5b"/>
-                            <constraint firstItem="W8q-Y0-In5" firstAttribute="trailing" secondItem="bM4-mS-bLh" secondAttribute="trailing" constant="20" id="iDL-Vj-wH8"/>
+                            <constraint firstItem="UcS-a6-zIr" firstAttribute="centerX" secondItem="FjX-8d-pje" secondAttribute="centerX" id="5hL-kg-STZ"/>
+                            <constraint firstItem="UcS-a6-zIr" firstAttribute="centerY" secondItem="FjX-8d-pje" secondAttribute="centerY" id="TQ8-eH-Nyy"/>
+                            <constraint firstItem="W8q-Y0-In5" firstAttribute="trailing" secondItem="UcS-a6-zIr" secondAttribute="trailing" constant="20" id="qoa-wh-AKb"/>
+                            <constraint firstItem="UcS-a6-zIr" firstAttribute="leading" secondItem="W8q-Y0-In5" secondAttribute="leading" constant="20" id="ztM-ix-avd"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="로그인" id="pIg-gI-Sq3"/>
+                    <navigationItem key="navigationItem" title="마이페이지" id="pIg-gI-Sq3"/>
                     <connections>
                         <outlet property="loginButton" destination="bM4-mS-bLh" id="tJf-0l-Odz"/>
+                        <outlet property="logoutButton" destination="HGc-XE-huG" id="G8M-H5-6DP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lSd-Ou-bmy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -137,10 +156,10 @@
             </objects>
             <point key="canvasLocation" x="3452" y="793"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar Controller-->
         <scene sceneID="TkL-Ng-TvR">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="RPK-4k-GME" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabBarController" automaticallyAdjustsScrollViewInsets="NO" id="RPK-4k-GME" customClass="MainTabBarController" customModule="sidedishApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="MUV-2k-ziJ">
                         <autoresizingMask key="autoresizingMask"/>

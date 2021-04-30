@@ -55,15 +55,8 @@ class SidedishCell: UICollectionViewCell {
         descriptionLabel.font = UIFont.systemFont(ofSize: 15)
         descriptionLabel.textColor = .gray
         
-      
-        
         eventBadgeStackView.spacing = 8
         eventBadgeStackView.axis = .horizontal
-        
-//        let priceStack = PriceStackView()
-//        priceStack.configureStackView()
-//        let priceStack = UIStackView(arrangedSubviews: [salePriceLabel, normalPriceLabel])
-        
         
         let textStack = UIStackView(arrangedSubviews: [nameLabel, descriptionLabel, priceStack, eventBadgeStackView])
         textStack.axis = .vertical

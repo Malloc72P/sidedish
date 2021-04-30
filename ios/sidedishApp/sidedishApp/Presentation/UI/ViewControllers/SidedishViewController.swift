@@ -129,17 +129,16 @@ class SidedishViewController: UIViewController {
 extension SidedishViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
        
-        guard let sectionKind = Section(rawValue: indexPath.section) else {
-                    fatalError("Unhandled section")
-                }
-                switch sectionKind {
-                case .main:
-                    pushDetailViewController(category: "main", id: sidedishViewModel.getMainItems()[indexPath.item].getId(), name: sidedishViewModel.getMainItems()[indexPath.item].getName())
-                case .soup:
-                    pushDetailViewController(category: "soup", id: sidedishViewModel.getMainItems()[indexPath.item].getId(), name: sidedishViewModel.getMainItems()[indexPath.item].getName())
-                case .side:
-                    pushDetailViewController(category: "side", id: sidedishViewModel.getMainItems()[indexPath.item].getId(), name: sidedishViewModel.getMainItems()[indexPath.item].getName())
-                }
+        guard let sectionKind = Section(rawValue: indexPath.section) else { return }
+        
+        switch sectionKind {
+        case .main:
+            pushDetailViewController(category: self.mainPath, id: sidedishViewModel.getMainItems()[indexPath.item].getId(), name: sidedishViewModel.getMainItems()[indexPath.item].getName())
+        case .soup:
+            pushDetailViewController(category: self.soupPath, id: sidedishViewModel.getSoupItems()[indexPath.item].getId(), name: sidedishViewModel.getSoupItems()[indexPath.item].getName())
+        case .side:
+            pushDetailViewController(category: self.sidePath, id: sidedishViewModel.getSideItems()[indexPath.item].getId(), name: sidedishViewModel.getSideItems()[indexPath.item].getName())
+        }
     }
     
     func pushDetailViewController(category: String, id: Int, name: String) {
@@ -155,4 +154,3 @@ extension SidedishViewController: UICollectionViewDelegate {
         }
     }
 }
-
