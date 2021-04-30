@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+    <script>
+        function scriptHandler(message) {
+            let token = "{{token}}";
+            console.log("", token);
+            try {
+                webkit.messageHandlers.scriptHandler.postMessage(token);
+            } catch (error) {
+                alert(error)
+            }
+        }
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+        }
+        .outer-wrapper {
+            height: 100%;
+            display: flex;
+            flex-flow: column;
+        }
+        .button-wrapper {
+            display: flex;
+            flex-flow: row;
+        }
+        .button-font-size {
+            font-size: 4rem;
+            padding: 1em 1em 1em 1em;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        .button-color {
+            background-color: #82D32D!important;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="outer-wrapper">
+    <div style="flex: 1;"></div>
+    <div class="button-wrapper">
+        <div style="flex: 1;"></div>
+        <button class="w3-button button-font-size button-color"
+                onclick="scriptHandler('scriptHandler')">사이드디쉬 앱에서 계속하기
+        </button>
+        <div style="flex: 1;"></div>
+    </div>
+    <div style="flex: 1;"></div>
+</div>
+</body>
+</html>
