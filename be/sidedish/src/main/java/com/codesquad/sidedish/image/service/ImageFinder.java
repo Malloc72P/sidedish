@@ -25,7 +25,7 @@ public class ImageFinder {
         try {
             //todo : 예외 처리
             SidedishItemImage sidedishItemImage = item.findThumbnailImage();
-            return findImageById(sidedishItemImage.getId());
+            return findImageById(sidedishItemImage.getSidedishImage());
         } catch (ImageItemNotFoundException e) {
             return DefaultImageUtil.getNotFoundImage();
         }

@@ -22,6 +22,7 @@ public class SidedishItemImage {
     }
 
     public boolean isThumbnailImage() {
+        System.out.println(imageType);
         return imageType == SidedishImageTypeEnum.THUMBNAIL;
     }
 
