@@ -16,6 +16,10 @@ struct Item: Codable, Equatable, Hashable {
     private let salePrice: Int
     private let eventBadgeList: [EventBadge]
     
+    func getId() -> Int {
+        return self.id
+    }
+    
     func getName() -> String {
         return self.name
     }
@@ -36,16 +40,20 @@ struct Item: Codable, Equatable, Hashable {
         return self.salePrice
     }
     
-    func getEventBadgeName(_ index: Int) -> String {
-        return self.eventBadgeList[index].getName()
+    func getEventBadgeList() -> [EventBadge] {
+        return eventBadgeList
     }
     
-    func getEventBadgeColor(_ index: Int) -> String {
-        return self.eventBadgeList[index].getColorHex()
-    }
+//    func getEventBadgeName(_ index: Int) -> String {
+//        return self.eventBadgeList[index].getName()
+//    }
+//
+//    func getEventBadgeColor(_ index: Int) -> String {
+//        return self.eventBadgeList[index].getColorHex()
+//    }
     
-    func isNotSale() -> Bool {
-        return self.salePrice == -1 ? true : false
+    func isSale() -> Bool {
+        return self.salePrice != -1
     }
 }
 

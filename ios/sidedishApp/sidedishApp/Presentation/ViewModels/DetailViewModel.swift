@@ -27,8 +27,16 @@ class DetailViewModel: DetailViewModelType {
         return self.item
     }
     
+    func getDetailImages() -> [Image] {
+        return item.getDetailImages()
+    }
+    
+    func getDescriptionImages() -> [Image] {
+        return item.getDescriptionImages()
+    }
+    
     func fetchData(path category: String, path id: Int) {
-       detailUseCase.getItem(path: category, path: id)
+        detailUseCase.getItem(path: category, path: id)
             .receive(on: DispatchQueue.global())
             .sink(receiveCompletion: { (result)
                     in switch result {

@@ -28,7 +28,7 @@ struct Endpoint {
     var url: URL {
         var components = URLComponents()
         components.scheme = "http"
-        components.host = "3.34.213.95"
+        components.host = "ec2-3-34-213-95.ap-northeast-2.compute.amazonaws.com"
         components.port = 8080
         components.path = "\(path)"
         let url = components.url
@@ -43,5 +43,13 @@ struct Endpoint {
 
     static func getDetail(path category: String, path id: Int) -> Self {
         return Endpoint(path: "/\(category)/\(id)")
+    }
+    
+    static func post(path category: String, path id: Int) -> Self {
+        return Endpoint(path: "/\(category)/\(id)")
+    }
+    
+    static func login() -> Self {
+        return Endpoint(path: "/users/login")
     }
 }

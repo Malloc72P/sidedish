@@ -10,6 +10,19 @@ import UIKit
 class BadgeLabel: UILabel {
     var padding : UIEdgeInsets
     
+    func configureLabel(text: String, color: String) {
+        self.text = text
+        self.backgroundColor = backgroundColor
+        self.padding = UIEdgeInsets(top: 5, left: 8, bottom: 5, right: 8)
+        self.sizeToFit()
+        self.layer.cornerRadius = 8
+        self.layer.masksToBounds = true
+        self.textColor = .systemBackground
+        self.font = UIFont.boldSystemFont(ofSize: 16)
+        self.backgroundColor = UIColor.hexStringToUIColor(hex: color)
+        self.text = text
+    }
+    
     required init(padding: UIEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)) {
         self.padding = padding
         super.init(frame: CGRect.zero)
